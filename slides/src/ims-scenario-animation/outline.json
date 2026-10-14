@@ -1,0 +1,27 @@
+{
+  "topic": "第七頁後的 IMS 情境動畫：小明打給小華",
+  "core_hook": "IMS 先確認你是誰、再找到對方；接通後聲音經 UPF，CSCF 繼續負責通話控制。",
+  "pages": [
+    {
+      "title": "第一幕｜先報到，電話才找得到我",
+      "type": "content",
+      "layout": "timeline_horizontal",
+      "brief": "銜接原簡報第七頁角色比喻。已完成 5G 連線與 ims PDU session 的小明，依序 REGISTER、I-CSCF 以 UAR 查 HSS 選 S-CSCF、S-CSCF 以 MAR 取向量、401 挑戰、UE 使用 SIM 算出的 RES 產生 Digest Authorization、SAR 登記服務與 profile、200 OK 完成註冊。七次點擊，動態訊息沿 UE、P、I、S、HSS 移動。小華也以相同方式完成註冊。K 不離開 SIM/HSS；不是在 SIP 直接裸送 RES。",
+      "image_queries": []
+    },
+    {
+      "title": "第二幕｜小明撥號，總機找到小華",
+      "type": "content",
+      "layout": "two_column_comparison",
+      "brief": "左側六個角色 UE1、P 主叫側、I、S、P 被叫側、UE2；右側 HSS 和逐步對白。双方已註冊。依本專案路由 INVITE 至 I-CSCF，LIR/LIA 查被叫的 S-CSCF，S-CSCF 依 Contact 與 Path 送回 P-CSCF 至小華。180 Ringing、200 OK 帶 SDP answer、ACK。兩個 P 是同一個 Kamailio 程序的兩個通話 leg。標準 IMS 主叫通常先走 Service-Route 到主叫 S-CSCF，差異写在備註及頁尾。",
+      "image_queries": []
+    },
+    {
+      "title": "第三幕｜接通後，聲音走自己的路",
+      "type": "content",
+      "layout": "three_column_cards",
+      "brief": "小明、UPF、小華構成藍色 RTP 媒體路徑，上方保留橘色 CSCF 控制群和 QoS 控制鏈。接到帶 answer 的 200 OK 時 P-CSCF 透過 AF shim 向 PCF 送 N5，PCF 經 SMF 對 UPF 安装語音 5QI 1 規則。SIP 信令仍為 5QI 5。雙向 RTP 不經 CSCF；本 PoC 為 UPF hairpin。BYE 經既有 dialog route 結束通話，對端 200 OK，同時釋放兩個 leg 的 QoS 預留；IMS 註冊和 PDU session 留在原處。字幕與脈動路徑各依点击出現，講者備註說明 PoC 不驗證實際 GBR 限速。",
+      "image_queries": []
+    }
+  ]
+}

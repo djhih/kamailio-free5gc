@@ -1,0 +1,462 @@
+{
+  "title": "NF 修改計畫：五個階段",
+  "type": "content",
+  "layout": "timeline_horizontal",
+  "background": "#F6F7F9",
+  "elements": [
+    {
+      "type": "shape",
+      "shape": "rect",
+      "x": 70,
+      "y": 176,
+      "w": 1140,
+      "h": 4,
+      "fill": "#D5DAE1"
+    },
+    {
+      "type": "shape",
+      "shape": "roundRect",
+      "x": 70,
+      "y": 146,
+      "w": 210,
+      "h": 62,
+      "fill": "#0F4C81",
+      "paragraphs": [
+        {
+          "align": "center",
+          "runs": [
+            {
+              "text": "Phase 0",
+              "sizePt": 18,
+              "bold": true,
+              "color": "#FFFFFF"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "runs": [
+            {
+              "text": "約 1 週",
+              "sizePt": 12,
+              "color": "#C9D3E0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "roundRect",
+      "x": 302,
+      "y": 146,
+      "w": 210,
+      "h": 62,
+      "fill": "#E8742A",
+      "paragraphs": [
+        {
+          "align": "center",
+          "runs": [
+            {
+              "text": "Phase 1",
+              "sizePt": 18,
+              "bold": true,
+              "color": "#FFFFFF"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "runs": [
+            {
+              "text": "1–2 週",
+              "sizePt": 12,
+              "color": "#FFFFFF"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "roundRect",
+      "x": 534,
+      "y": 146,
+      "w": 210,
+      "h": 62,
+      "fill": "#0B1B2E",
+      "paragraphs": [
+        {
+          "align": "center",
+          "runs": [
+            {
+              "text": "Phase 2",
+              "sizePt": 18,
+              "bold": true,
+              "color": "#FFFFFF"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "runs": [
+            {
+              "text": "1–2 週",
+              "sizePt": 12,
+              "color": "#C9D3E0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "roundRect",
+      "x": 766,
+      "y": 146,
+      "w": 210,
+      "h": 62,
+      "fill": "#E8742A",
+      "paragraphs": [
+        {
+          "align": "center",
+          "runs": [
+            {
+              "text": "Phase 3",
+              "sizePt": 18,
+              "bold": true,
+              "color": "#FFFFFF"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "runs": [
+            {
+              "text": "約 1 週",
+              "sizePt": 12,
+              "color": "#FFFFFF"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "roundRect",
+      "x": 998,
+      "y": 146,
+      "w": 212,
+      "h": 62,
+      "fill": "#E8742A",
+      "paragraphs": [
+        {
+          "align": "center",
+          "runs": [
+            {
+              "text": "Phase 4",
+              "sizePt": 18,
+              "bold": true,
+              "color": "#FFFFFF"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "runs": [
+            {
+              "text": "約 1 週",
+              "sizePt": 12,
+              "color": "#FFFFFF"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "x": 70,
+      "y": 40,
+      "w": 1140,
+      "h": 60,
+      "paragraphs": [
+        {
+          "runs": [
+            {
+              "text": "NF 修改計畫：五個階段",
+              "sizePt": 34,
+              "bold": true,
+              "color": "#14213D"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "x": 74,
+      "y": 236,
+      "w": 202,
+      "h": 300,
+      "paragraphs": [
+        {
+          "spaceAfterPt": 10,
+          "runs": [
+            {
+              "text": "前置",
+              "sizePt": 18,
+              "bold": true,
+              "color": "#14213D"
+            }
+          ]
+        },
+        {
+          "bullet": true,
+          "spaceAfterPt": 6,
+          "runs": [
+            {
+              "text": "測試改用抓包",
+              "sizePt": 15,
+              "color": "#14213D"
+            }
+          ]
+        },
+        {
+          "bullet": true,
+          "spaceAfterPt": 6,
+          "runs": [
+            {
+              "text": "AMF imsVoPS 改 1",
+              "sizePt": 15,
+              "color": "#14213D"
+            }
+          ]
+        },
+        {
+          "bullet": true,
+          "spaceAfterPt": 6,
+          "runs": [
+            {
+              "text": "確認 ims_qos 的 AVP",
+              "sizePt": 15,
+              "color": "#14213D"
+            }
+          ]
+        },
+        {
+          "bullet": true,
+          "runs": [
+            {
+              "text": "確認 free-ran-ue 能收 N2 modify",
+              "sizePt": 15,
+              "color": "#14213D"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "x": 306,
+      "y": 236,
+      "w": 202,
+      "h": 300,
+      "paragraphs": [
+        {
+          "spaceAfterPt": 10,
+          "runs": [
+            {
+              "text": "Adapter",
+              "sizePt": 18,
+              "bold": true,
+              "color": "#14213D"
+            }
+          ]
+        },
+        {
+          "bullet": true,
+          "spaceAfterPt": 6,
+          "runs": [
+            {
+              "text": "AAR／STR ↔ N5",
+              "sizePt": 15,
+              "color": "#14213D"
+            }
+          ]
+        },
+        {
+          "bullet": true,
+          "spaceAfterPt": 6,
+          "runs": [
+            {
+              "text": "P-CSCF 改用 ims_qos",
+              "sizePt": 15,
+              "color": "#14213D"
+            }
+          ]
+        },
+        {
+          "bullet": true,
+          "runs": [
+            {
+              "text": "拿掉 AF shim",
+              "sizePt": 15,
+              "color": "#14213D"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "x": 538,
+      "y": 236,
+      "w": 202,
+      "h": 300,
+      "paragraphs": [
+        {
+          "spaceAfterPt": 10,
+          "runs": [
+            {
+              "text": "SMF",
+              "sizePt": 18,
+              "bold": true,
+              "color": "#14213D"
+            }
+          ]
+        },
+        {
+          "bullet": true,
+          "spaceAfterPt": 6,
+          "runs": [
+            {
+              "text": "policy 更新後送 N1N2",
+              "sizePt": 15,
+              "color": "#14213D"
+            }
+          ]
+        },
+        {
+          "bullet": true,
+          "runs": [
+            {
+              "text": "QoS flow 到 gNB 與 UE",
+              "sizePt": 15,
+              "color": "#14213D"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "x": 770,
+      "y": 236,
+      "w": 202,
+      "h": 300,
+      "paragraphs": [
+        {
+          "spaceAfterPt": 10,
+          "runs": [
+            {
+              "text": "事件回傳",
+              "sizePt": 18,
+              "bold": true,
+              "color": "#14213D"
+            }
+          ]
+        },
+        {
+          "bullet": true,
+          "spaceAfterPt": 6,
+          "runs": [
+            {
+              "text": "terminate → ASR",
+              "sizePt": 15,
+              "color": "#14213D"
+            }
+          ]
+        },
+        {
+          "bullet": true,
+          "runs": [
+            {
+              "text": "資源事件 → RAR",
+              "sizePt": 15,
+              "color": "#14213D"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1002,
+      "y": 236,
+      "w": 204,
+      "h": 300,
+      "paragraphs": [
+        {
+          "spaceAfterPt": 10,
+          "runs": [
+            {
+              "text": "註冊時交換",
+              "sizePt": 18,
+              "bold": true,
+              "color": "#14213D"
+            }
+          ]
+        },
+        {
+          "bullet": true,
+          "spaceAfterPt": 6,
+          "runs": [
+            {
+              "text": "信令 flow、事件訂閱",
+              "sizePt": 15,
+              "color": "#14213D"
+            }
+          ]
+        },
+        {
+          "bullet": true,
+          "runs": [
+            {
+              "text": "用 BSF 找 PCF",
+              "sizePt": 15,
+              "color": "#14213D"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "roundRect",
+      "x": 70,
+      "y": 572,
+      "w": 1140,
+      "h": 80,
+      "fill": "#E3ECF6",
+      "valign": "middle",
+      "paragraphs": [
+        {
+          "align": "left",
+          "runs": [
+            {
+              "text": "   驗收：",
+              "sizePt": 16,
+              "bold": true,
+              "color": "#0F4C81"
+            },
+            {
+              "text": "每階段都跑 03-call-test.sh、05-n5-qos-test.sh；Phase 2 另外抓包確認 N2 Resource Modify",
+              "sizePt": 16,
+              "color": "#14213D"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

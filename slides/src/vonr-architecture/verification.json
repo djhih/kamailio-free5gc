@@ -1,0 +1,14 @@
+{
+  "deck": "VoNR_over_IMS_kamailio_intro.pptx",
+  "page": 12,
+  "part": "ppt/slides/slide12.xml",
+  "total_slides": 28,
+  "changed_parts": [
+    "ppt/slides/slide12.xml"
+  ],
+  "other_parts_preserved": 74,
+  "native_editable_shapes": 95,
+  "original_slide_sha256": "1b2887d58bfabf6ba0fbd75feae39fa1863a97552d45eb526cfa5fe671f008a0",
+  "rebuilt_slide_sha256": "58ad5b7b6b1dab4eaf6630109a2a1deb9b9d3da70a2e64bc5614f3495db32500",
+  "deck_sha256": "36f0f02e08e07364b3b22fb09df20ffdf829ed62094de7006170be66d08b1d3f"
+}

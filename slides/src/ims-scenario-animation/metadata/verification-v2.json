@@ -1,0 +1,16 @@
+{
+  "source": "VoNR_over_IMS_kamailio_intro.pptx",
+  "output": "VoNR_over_IMS_kamailio_intro_animated_v2.pptx",
+  "originalSlidesPreserved": 25,
+  "animationCounts": [
+    57,
+    48,
+    37
+  ],
+  "headlessGenOfficePlayback": {
+    "page8": 7,
+    "page9": 6
+  },
+  "axisAlignedLines": 39,
+  "longSipRtpEndpointsAligned": true
+}

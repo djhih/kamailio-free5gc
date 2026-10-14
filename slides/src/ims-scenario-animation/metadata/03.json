@@ -1,0 +1,204 @@
+{
+  "keys": {
+    "title": 0,
+    "subtitle": 1,
+    "ims": 2,
+    "qos": 3,
+    "a": 4,
+    "upf": 5,
+    "b": 6,
+    "rtp-out": 7,
+    "rtp-back": 8,
+    "rtp-label": 9,
+    "rtp-dot1": 10,
+    "rtp-dot2": 11,
+    "q1": 12,
+    "q2": 13,
+    "q3": 14,
+    "q4": 15,
+    "qdot": 16,
+    "bye1": 17,
+    "bye2": 18,
+    "bye3": 19,
+    "bye-ims": 20,
+    "bye-label": 21,
+    "byedot": 22,
+    "card1": 23,
+    "card2": 24,
+    "card3": 25,
+    "footer": 26
+  },
+  "steps": [
+    {
+      "label": "申請媒體 QoS",
+      "show": [
+        "card1",
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ],
+      "packets": [
+        {
+          "key": "qdot",
+          "path": [
+            [
+              0,
+              0
+            ],
+            [
+              230,
+              0
+            ],
+            [
+              230,
+              103
+            ],
+            [
+              -210,
+              103
+            ],
+            [
+              -210,
+              135
+            ]
+          ],
+          "duration": 2300
+        }
+      ],
+      "pulse": [
+        "qos",
+        "upf"
+      ]
+    },
+    {
+      "label": "RTP 雙向語音",
+      "show": [
+        "card2",
+        "rtp-out",
+        "rtp-back",
+        "rtp-label"
+      ],
+      "packets": [
+        {
+          "key": "rtp-dot1",
+          "path": [
+            [
+              0,
+              0
+            ],
+            [
+              956,
+              0
+            ]
+          ],
+          "duration": 2200
+        },
+        {
+          "key": "rtp-dot2",
+          "path": [
+            [
+              0,
+              0
+            ],
+            [
+              -956,
+              0
+            ]
+          ],
+          "duration": 2200
+        }
+      ],
+      "pulse": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "label": "BYE 與釋放 QoS",
+      "show": [
+        "card3",
+        "bye1",
+        "bye2",
+        "bye3",
+        "bye-ims",
+        "bye-label"
+      ],
+      "hide": [
+        "rtp-out",
+        "rtp-back",
+        "rtp-label"
+      ],
+      "packets": [
+        {
+          "key": "byedot",
+          "path": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              -77
+            ],
+            [
+              956,
+              -77
+            ],
+            [
+              956,
+              0
+            ],
+            [
+              956,
+              -77
+            ],
+            [
+              0,
+              -77
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "duration": 2800
+        }
+      ],
+      "pulse": [
+        "ims",
+        "qos",
+        "upf"
+      ]
+    }
+  ],
+  "ids": {
+    "title": "e_e9b330f6",
+    "subtitle": "e_4d68ade8",
+    "ims": "e_cee74776",
+    "qos": "e_f172edd7",
+    "a": "e_46193ac2",
+    "upf": "e_b1472b54",
+    "b": "e_53b5ea0e",
+    "rtp-out": "e_25084430",
+    "rtp-back": "e_b89294a5",
+    "rtp-label": "e_63e4a33e",
+    "rtp-dot1": "e_7a2a572d",
+    "rtp-dot2": "e_3c9a7011",
+    "q1": "e_44d163c0",
+    "q2": "e_a670c0d0",
+    "q3": "e_eb42f5e4",
+    "q4": "e_99c3ab9a",
+    "qdot": "e_f343d861",
+    "bye1": "e_3481245c",
+    "bye2": "e_a5966a63",
+    "bye3": "e_afd28e0d",
+    "bye-ims": "e_5e0fbc00",
+    "bye-label": "e_93966cc3",
+    "byedot": "e_91173d2f",
+    "card1": "e_5eaaca50",
+    "card2": "e_8d9f3b94",
+    "card3": "e_ba7db63f",
+    "footer": "e_73c6280b"
+  }
+}

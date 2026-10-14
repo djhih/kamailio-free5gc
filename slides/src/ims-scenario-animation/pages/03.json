@@ -1,0 +1,697 @@
+{
+  "title": "第三幕｜接通後，聲音走自己的路",
+  "type": "content",
+  "layout": "three_column_cards",
+  "background": "#F6F7F9",
+  "elements": [
+    {
+      "type": "text",
+      "x": 60,
+      "y": 34,
+      "w": 1160,
+      "h": 60,
+      "paragraphs": [
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "第三幕｜接通後，聲音走自己的路",
+              "sizePt": 30,
+              "color": "#14213D",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "x": 60,
+      "y": 103,
+      "w": 1160,
+      "h": 33,
+      "paragraphs": [
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "P-CSCF 看到 200 OK 的 SDP answer 後申請 QoS；接著示意 ACK 後的雙向語音。",
+              "sizePt": 15,
+              "color": "#5B6575",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "roundRect",
+      "x": 430,
+      "y": 165,
+      "w": 420,
+      "h": 88,
+      "fill": "#FCEBDD",
+      "stroke": {
+        "color": "#D5DAE1",
+        "widthPt": 1
+      },
+      "paragraphs": [
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "P / I / S-CSCF",
+              "sizePt": 22,
+              "color": "#E8742A",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "通話控制：接通、掛斷",
+              "sizePt": 13,
+              "color": "#14213D",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "roundRect",
+      "x": 938,
+      "y": 165,
+      "w": 284,
+      "h": 90,
+      "fill": "#E8F1F9",
+      "stroke": {
+        "color": "#D5DAE1",
+        "widthPt": 1
+      },
+      "paragraphs": [
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "AF shim → PCF",
+              "sizePt": 17,
+              "color": "#2877B5",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "N5 → N7 / SMF → N4",
+              "sizePt": 12,
+              "color": "#5B6575",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "兩端各一份語音規則",
+              "sizePt": 12,
+              "color": "#14213D",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "roundRect",
+      "x": 72,
+      "y": 345,
+      "w": 180,
+      "h": 97,
+      "fill": "#FFFFFF",
+      "stroke": {
+        "color": "#D5DAE1",
+        "widthPt": 1
+      },
+      "paragraphs": [
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "小明 UE",
+              "sizePt": 22,
+              "color": "#2877B5",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "「喂，聽得到嗎？」",
+              "sizePt": 12,
+              "color": "#5B6575",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "roundRect",
+      "x": 550,
+      "y": 345,
+      "w": 180,
+      "h": 97,
+      "fill": "#FFFFFF",
+      "stroke": {
+        "color": "#D5DAE1",
+        "widthPt": 1
+      },
+      "paragraphs": [
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "UPF",
+              "sizePt": 22,
+              "color": "#2877B5",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "轉送真正的語音",
+              "sizePt": 12,
+              "color": "#5B6575",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "roundRect",
+      "x": 1028,
+      "y": 345,
+      "w": 180,
+      "h": 97,
+      "fill": "#FFFFFF",
+      "stroke": {
+        "color": "#D5DAE1",
+        "widthPt": 1
+      },
+      "paragraphs": [
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "小華 UE",
+              "sizePt": 22,
+              "color": "#2877B5",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "「聽到了！」",
+              "sizePt": 12,
+              "color": "#5B6575",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "lineArrow",
+      "x": 162,
+      "y": 466,
+      "w": 956,
+      "h": 1,
+      "flipH": false,
+      "stroke": {
+        "color": "#2877B5",
+        "widthPt": 1.6
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "lineArrow",
+      "x": 162,
+      "y": 491,
+      "w": 956,
+      "h": 1,
+      "flipH": true,
+      "stroke": {
+        "color": "#2877B5",
+        "widthPt": 1.6
+      }
+    },
+    {
+      "type": "text",
+      "x": 280,
+      "y": 443,
+      "w": 720,
+      "h": 22,
+      "paragraphs": [
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "RTP 語音：小明 ⇄ UPF ⇄ 小華（CSCF 不轉送聲音）",
+              "sizePt": 13,
+              "color": "#2877B5",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "ellipse",
+      "x": 154,
+      "y": 458,
+      "w": 16,
+      "h": 16,
+      "fill": "#2877B5",
+      "stroke": {
+        "color": "#FFFFFF",
+        "widthPt": 1
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "ellipse",
+      "x": 1110,
+      "y": 483,
+      "w": 16,
+      "h": 16,
+      "fill": "#2877B5",
+      "stroke": {
+        "color": "#FFFFFF",
+        "widthPt": 1
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "lineArrow",
+      "x": 850,
+      "y": 210,
+      "w": 88,
+      "h": 1,
+      "stroke": {
+        "color": "#2877B5",
+        "widthPt": 1.6
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "line",
+      "x": 1080,
+      "y": 255,
+      "w": 1,
+      "h": 58,
+      "stroke": {
+        "color": "#2877B5",
+        "widthPt": 1.6
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "line",
+      "x": 640,
+      "y": 313,
+      "w": 440,
+      "h": 1,
+      "stroke": {
+        "color": "#2877B5",
+        "widthPt": 1.6
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "lineArrow",
+      "x": 640,
+      "y": 313,
+      "w": 1,
+      "h": 32,
+      "stroke": {
+        "color": "#2877B5",
+        "widthPt": 1.6
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "ellipse",
+      "x": 842,
+      "y": 202,
+      "w": 16,
+      "h": 16,
+      "fill": "#2877B5",
+      "stroke": {
+        "color": "#FFFFFF",
+        "widthPt": 1
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "line",
+      "x": 162,
+      "y": 268,
+      "w": 1,
+      "h": 77,
+      "stroke": {
+        "color": "#E8742A",
+        "widthPt": 1.6
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "lineArrow",
+      "x": 162,
+      "y": 268,
+      "w": 956,
+      "h": 1,
+      "stroke": {
+        "color": "#E8742A",
+        "widthPt": 1.6
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "lineArrow",
+      "x": 1118,
+      "y": 268,
+      "w": 1,
+      "h": 77,
+      "stroke": {
+        "color": "#E8742A",
+        "widthPt": 1.6
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "line",
+      "x": 640,
+      "y": 253,
+      "w": 1,
+      "h": 15,
+      "stroke": {
+        "color": "#E8742A",
+        "widthPt": 1.6
+      }
+    },
+    {
+      "type": "text",
+      "x": 425,
+      "y": 275,
+      "w": 470,
+      "h": 27,
+      "paragraphs": [
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "BYE / 200 OK：仍經既有的 SIP 路徑",
+              "sizePt": 13,
+              "color": "#E8742A",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "ellipse",
+      "x": 154,
+      "y": 337,
+      "w": 16,
+      "h": 16,
+      "fill": "#E8742A",
+      "stroke": {
+        "color": "#FFFFFF",
+        "widthPt": 1
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "roundRect",
+      "x": 60,
+      "y": 536,
+      "w": 367,
+      "h": 103,
+      "fill": "#E8F1F9",
+      "stroke": {
+        "color": "#D5DAE1",
+        "widthPt": 1
+      },
+      "paragraphs": [
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "① 接聽：向 5GC 申請 QoS",
+              "sizePt": 17,
+              "color": "#2877B5",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "P-CSCF 讀 SDP，經 AF shim 送 N5",
+              "sizePt": 12,
+              "color": "#14213D",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "媒體用 5QI 1，信令維持 5QI 5",
+              "sizePt": 12,
+              "color": "#14213D",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "roundRect",
+      "x": 457,
+      "y": 536,
+      "w": 367,
+      "h": 103,
+      "fill": "#E8F1F9",
+      "stroke": {
+        "color": "#D5DAE1",
+        "widthPt": 1
+      },
+      "paragraphs": [
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "② 說話：RTP 雙向傳送",
+              "sizePt": 17,
+              "color": "#2877B5",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "本專案在 UPF 內轉給另一個 UE",
+              "sizePt": 12,
+              "color": "#14213D",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "IMS 管通話，UPF 搬語音封包",
+              "sizePt": 12,
+              "color": "#14213D",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "roundRect",
+      "x": 854,
+      "y": 536,
+      "w": 367,
+      "h": 103,
+      "fill": "#FCEBDD",
+      "stroke": {
+        "color": "#D5DAE1",
+        "widthPt": 1
+      },
+      "paragraphs": [
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "③ 掛斷：BYE 並釋放 QoS",
+              "sizePt": 17,
+              "color": "#E8742A",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "結束通話，釋放兩端媒體預留",
+              "sizePt": 12,
+              "color": "#14213D",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "IMS 註冊與 PDU session 仍保留",
+              "sizePt": 12,
+              "color": "#14213D",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "x": 60,
+      "y": 666,
+      "w": 1160,
+      "h": 30,
+      "paragraphs": [
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "逐次點擊 3 次｜省略 gNB／N3；本 PoC 驗證 QoS 規則存在，未驗證 GBR 實際限速。",
+              "sizePt": 11,
+              "color": "#5B6575",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

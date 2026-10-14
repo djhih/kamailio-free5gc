@@ -1,0 +1,12 @@
+# 3GPP specs: public and large; fetched by specs/3gpp-r17/download.sh
+specs/3gpp-r17/zip/
+specs/3gpp-r17/*.doc
+specs/3gpp-r17/*.docx
+specs/3gpp-r17/*.yaml
+specs/3gpp-r17/*.xsd
+
+# Build leftovers
+*.building.pptx
+__pycache__/
+~$*.pptx
+.~lock.*#

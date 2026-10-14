@@ -1,0 +1,1277 @@
+[
+  {
+    "kind": "text",
+    "key": "title",
+    "x": 46,
+    "y": 26,
+    "w": 1190,
+    "h": 51,
+    "text": "free5GC 接 IMS：資料路徑與政策控制",
+    "size": 36,
+    "color": "ink",
+    "bold": true,
+    "align": "left"
+  },
+  {
+    "kind": "text",
+    "key": "subtitle",
+    "x": 48,
+    "y": 88,
+    "w": 1190,
+    "h": 30,
+    "text": "IMS 媒體需求 → PCF 決策 → SMF session / QoS policy → UPF 規則下發",
+    "size": 21,
+    "color": "muted",
+    "bold": false,
+    "align": "left"
+  },
+  {
+    "kind": "box",
+    "key": "access-domain",
+    "x": 46,
+    "y": 142,
+    "w": 236,
+    "h": 432,
+    "fill": "access",
+    "stroke": null,
+    "dashed": false,
+    "radius": true
+  },
+  {
+    "kind": "box",
+    "key": "core-domain",
+    "x": 302,
+    "y": 142,
+    "w": 322,
+    "h": 432,
+    "fill": "pale",
+    "stroke": null,
+    "dashed": false,
+    "radius": true
+  },
+  {
+    "kind": "box",
+    "key": "ims-domain",
+    "x": 650,
+    "y": 142,
+    "w": 584,
+    "h": 432,
+    "fill": "peach",
+    "stroke": null,
+    "dashed": false,
+    "radius": true
+  },
+  {
+    "kind": "text",
+    "key": "access-title",
+    "x": 64,
+    "y": 156,
+    "w": 205,
+    "h": 31,
+    "text": "UE / RAN",
+    "size": 23,
+    "color": "deep",
+    "bold": true,
+    "align": "left"
+  },
+  {
+    "kind": "text",
+    "key": "core-title",
+    "x": 322,
+    "y": 156,
+    "w": 270,
+    "h": 31,
+    "text": "5GC · free5GC",
+    "size": 23,
+    "color": "deep",
+    "bold": true,
+    "align": "left"
+  },
+  {
+    "kind": "text",
+    "key": "ims-title",
+    "x": 672,
+    "y": 156,
+    "w": 270,
+    "h": 31,
+    "text": "IMS",
+    "size": 23,
+    "color": "orange",
+    "bold": true,
+    "align": "left"
+  },
+  {
+    "kind": "box",
+    "key": "ims-data-network",
+    "x": 675,
+    "y": 354,
+    "w": 551,
+    "h": 217,
+    "fill": "dn",
+    "stroke": "orange",
+    "dashed": false,
+    "radius": true
+  },
+  {
+    "kind": "text",
+    "key": "dn-title",
+    "x": 820,
+    "y": 369,
+    "w": 207,
+    "h": 27,
+    "text": "IMS Data Network",
+    "size": 19,
+    "color": "orange",
+    "bold": true,
+    "align": "left"
+  },
+  {
+    "kind": "text",
+    "key": "dn-subtitle",
+    "x": 822,
+    "y": 397,
+    "w": 205,
+    "h": 24,
+    "text": "N6 的 DN 端",
+    "size": 15,
+    "color": "muted",
+    "bold": false,
+    "align": "left"
+  },
+  {
+    "kind": "line",
+    "key": "n5-af-to-pcf",
+    "points": [
+      [
+        705,
+        254
+      ],
+      [
+        465,
+        254
+      ]
+    ],
+    "color": "ink",
+    "width": 2.4,
+    "dashed": false,
+    "arrow": true
+  },
+  {
+    "kind": "line",
+    "key": "n7-pcf-to-smf",
+    "points": [
+      [
+        396,
+        292
+      ],
+      [
+        396,
+        356
+      ]
+    ],
+    "color": "ink",
+    "width": 2.4,
+    "dashed": false,
+    "arrow": true
+  },
+  {
+    "kind": "line",
+    "key": "n4-smf-to-upf",
+    "points": [
+      [
+        396,
+        422
+      ],
+      [
+        396,
+        486
+      ]
+    ],
+    "color": "ink",
+    "width": 2.4,
+    "dashed": false,
+    "arrow": true
+  },
+  {
+    "kind": "line",
+    "key": "custom-pcscf-to-adapter",
+    "points": [
+      [
+        771,
+        486
+      ],
+      [
+        771,
+        293
+      ]
+    ],
+    "color": "custom",
+    "width": 2.4,
+    "dashed": true,
+    "arrow": true
+  },
+  {
+    "kind": "line",
+    "key": "uu-ue-to-gnb",
+    "points": [
+      [
+        140,
+        519
+      ],
+      [
+        189,
+        519
+      ]
+    ],
+    "color": "blue",
+    "width": 4.2,
+    "dashed": false,
+    "arrow": true
+  },
+  {
+    "kind": "line",
+    "key": "n3-gnb-to-upf",
+    "points": [
+      [
+        267,
+        519
+      ],
+      [
+        327,
+        519
+      ]
+    ],
+    "color": "blue",
+    "width": 4.2,
+    "dashed": false,
+    "arrow": true
+  },
+  {
+    "kind": "line",
+    "key": "n6-upf-to-dn",
+    "points": [
+      [
+        465,
+        519
+      ],
+      [
+        675,
+        519
+      ]
+    ],
+    "color": "blue",
+    "width": 4.2,
+    "dashed": false,
+    "arrow": true
+  },
+  {
+    "kind": "line",
+    "key": "dn-ip-reachability",
+    "points": [
+      [
+        682,
+        519
+      ],
+      [
+        705,
+        519
+      ]
+    ],
+    "color": "blue",
+    "width": 4.2,
+    "dashed": false,
+    "arrow": true
+  },
+  {
+    "kind": "line",
+    "key": "gm-ue-to-pcscf",
+    "points": [
+      [
+        101,
+        552
+      ],
+      [
+        101,
+        614
+      ],
+      [
+        771,
+        614
+      ],
+      [
+        771,
+        552
+      ]
+    ],
+    "color": "orange",
+    "width": 2.4,
+    "dashed": false,
+    "arrow": true
+  },
+  {
+    "kind": "line",
+    "key": "mw-pcscf-to-icscf",
+    "points": [
+      [
+        837,
+        519
+      ],
+      [
+        891,
+        519
+      ]
+    ],
+    "color": "orange",
+    "width": 2.4,
+    "dashed": false,
+    "arrow": true
+  },
+  {
+    "kind": "line",
+    "key": "mw-icscf-to-scscf",
+    "points": [
+      [
+        1023,
+        519
+      ],
+      [
+        1076,
+        519
+      ]
+    ],
+    "color": "orange",
+    "width": 2.4,
+    "dashed": false,
+    "arrow": true
+  },
+  {
+    "kind": "line",
+    "key": "cx-icscf-to-hss",
+    "points": [
+      [
+        957,
+        486
+      ],
+      [
+        957,
+        444
+      ],
+      [
+        1090,
+        444
+      ],
+      [
+        1090,
+        430
+      ]
+    ],
+    "color": "cx",
+    "width": 1.8,
+    "dashed": false,
+    "arrow": true
+  },
+  {
+    "kind": "line",
+    "key": "cx-scscf-to-hss",
+    "points": [
+      [
+        1142,
+        486
+      ],
+      [
+        1142,
+        430
+      ]
+    ],
+    "color": "cx",
+    "width": 1.8,
+    "dashed": false,
+    "arrow": true
+  },
+  {
+    "kind": "box",
+    "key": "ue",
+    "x": 62,
+    "y": 486,
+    "w": 78,
+    "h": 66,
+    "fill": "white",
+    "stroke": "edge",
+    "dashed": false,
+    "radius": true
+  },
+  {
+    "kind": "text",
+    "key": "ue-title",
+    "x": 67,
+    "y": 496,
+    "w": 68,
+    "h": 28,
+    "text": "UE",
+    "size": 23,
+    "color": "deep",
+    "bold": true,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "ue-subtitle",
+    "x": 66,
+    "y": 526,
+    "w": 70,
+    "h": 20,
+    "text": "SIPp",
+    "size": 14,
+    "color": "muted",
+    "bold": false,
+    "align": "center"
+  },
+  {
+    "kind": "box",
+    "key": "gnb",
+    "x": 189,
+    "y": 486,
+    "w": 78,
+    "h": 66,
+    "fill": "white",
+    "stroke": "edge",
+    "dashed": false,
+    "radius": true
+  },
+  {
+    "kind": "text",
+    "key": "gnb-title",
+    "x": 194,
+    "y": 496,
+    "w": 68,
+    "h": 28,
+    "text": "gNB",
+    "size": 23,
+    "color": "deep",
+    "bold": true,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "gnb-subtitle",
+    "x": 193,
+    "y": 526,
+    "w": 70,
+    "h": 20,
+    "text": "模擬 RAN",
+    "size": 14,
+    "color": "muted",
+    "bold": false,
+    "align": "center"
+  },
+  {
+    "kind": "box",
+    "key": "pcf",
+    "x": 327,
+    "y": 226,
+    "w": 138,
+    "h": 66,
+    "fill": "white",
+    "stroke": "edge",
+    "dashed": false,
+    "radius": true
+  },
+  {
+    "kind": "text",
+    "key": "pcf-title",
+    "x": 332,
+    "y": 236,
+    "w": 128,
+    "h": 28,
+    "text": "PCF",
+    "size": 23,
+    "color": "blue",
+    "bold": true,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "pcf-subtitle",
+    "x": 331,
+    "y": 266,
+    "w": 130,
+    "h": 20,
+    "text": "Policy decision",
+    "size": 14,
+    "color": "muted",
+    "bold": false,
+    "align": "center"
+  },
+  {
+    "kind": "box",
+    "key": "smf",
+    "x": 327,
+    "y": 356,
+    "w": 138,
+    "h": 66,
+    "fill": "white",
+    "stroke": "edge",
+    "dashed": false,
+    "radius": true
+  },
+  {
+    "kind": "text",
+    "key": "smf-title",
+    "x": 332,
+    "y": 366,
+    "w": 128,
+    "h": 28,
+    "text": "SMF",
+    "size": 23,
+    "color": "blue",
+    "bold": true,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "smf-subtitle",
+    "x": 331,
+    "y": 396,
+    "w": 130,
+    "h": 20,
+    "text": "Session / QoS",
+    "size": 14,
+    "color": "muted",
+    "bold": false,
+    "align": "center"
+  },
+  {
+    "kind": "box",
+    "key": "upf",
+    "x": 327,
+    "y": 486,
+    "w": 138,
+    "h": 66,
+    "fill": "deep",
+    "stroke": null,
+    "dashed": false,
+    "radius": true
+  },
+  {
+    "kind": "text",
+    "key": "upf-title",
+    "x": 332,
+    "y": 496,
+    "w": 128,
+    "h": 28,
+    "text": "UPF",
+    "size": 23,
+    "color": "white",
+    "bold": true,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "upf-subtitle",
+    "x": 331,
+    "y": 526,
+    "w": 130,
+    "h": 20,
+    "text": "Forwarding / QER",
+    "size": 14,
+    "color": "white",
+    "bold": false,
+    "align": "center"
+  },
+  {
+    "kind": "box",
+    "key": "pcscf",
+    "x": 705,
+    "y": 486,
+    "w": 132,
+    "h": 66,
+    "fill": "white",
+    "stroke": "edge",
+    "dashed": false,
+    "radius": true
+  },
+  {
+    "kind": "text",
+    "key": "pcscf-title",
+    "x": 710,
+    "y": 496,
+    "w": 122,
+    "h": 28,
+    "text": "P-CSCF",
+    "size": 23,
+    "color": "orange",
+    "bold": true,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "pcscf-subtitle",
+    "x": 709,
+    "y": 526,
+    "w": 124,
+    "h": 20,
+    "text": "(Kamailio)",
+    "size": 14,
+    "color": "muted",
+    "bold": false,
+    "align": "center"
+  },
+  {
+    "kind": "box",
+    "key": "icscf",
+    "x": 891,
+    "y": 486,
+    "w": 132,
+    "h": 66,
+    "fill": "white",
+    "stroke": "edge",
+    "dashed": false,
+    "radius": true
+  },
+  {
+    "kind": "text",
+    "key": "icscf-title",
+    "x": 896,
+    "y": 496,
+    "w": 122,
+    "h": 28,
+    "text": "I-CSCF",
+    "size": 23,
+    "color": "orange",
+    "bold": true,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "icscf-subtitle",
+    "x": 895,
+    "y": 526,
+    "w": 124,
+    "h": 20,
+    "text": "(Kamailio)",
+    "size": 14,
+    "color": "muted",
+    "bold": false,
+    "align": "center"
+  },
+  {
+    "kind": "box",
+    "key": "scscf",
+    "x": 1076,
+    "y": 486,
+    "w": 132,
+    "h": 66,
+    "fill": "white",
+    "stroke": "edge",
+    "dashed": false,
+    "radius": true
+  },
+  {
+    "kind": "text",
+    "key": "scscf-title",
+    "x": 1081,
+    "y": 496,
+    "w": 122,
+    "h": 28,
+    "text": "S-CSCF",
+    "size": 23,
+    "color": "orange",
+    "bold": true,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "scscf-subtitle",
+    "x": 1080,
+    "y": 526,
+    "w": 124,
+    "h": 20,
+    "text": "(Kamailio)",
+    "size": 14,
+    "color": "muted",
+    "bold": false,
+    "align": "center"
+  },
+  {
+    "kind": "box",
+    "key": "hss",
+    "x": 1046,
+    "y": 368,
+    "w": 162,
+    "h": 62,
+    "fill": "white",
+    "stroke": "edge",
+    "dashed": false,
+    "radius": true
+  },
+  {
+    "kind": "text",
+    "key": "hss-title",
+    "x": 1051,
+    "y": 378,
+    "w": 152,
+    "h": 28,
+    "text": "HSS",
+    "size": 23,
+    "color": "orange",
+    "bold": true,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "hss-subtitle",
+    "x": 1050,
+    "y": 408,
+    "w": 154,
+    "h": 20,
+    "text": "(PyHSS)",
+    "size": 14,
+    "color": "muted",
+    "bold": false,
+    "align": "center"
+  },
+  {
+    "kind": "box",
+    "key": "custom-af-adapter",
+    "x": 705,
+    "y": 204,
+    "w": 318,
+    "h": 89,
+    "fill": "white",
+    "stroke": "custom",
+    "dashed": true,
+    "radius": true
+  },
+  {
+    "kind": "text",
+    "key": "af-title",
+    "x": 717,
+    "y": 214,
+    "w": 296,
+    "h": 28,
+    "text": "IMS-to-5GC AF Adapter",
+    "size": 21,
+    "color": "ink",
+    "bold": true,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "af-role",
+    "x": 717,
+    "y": 244,
+    "w": 296,
+    "h": 22,
+    "text": "Custom · 承接 IMS AF 功能",
+    "size": 16,
+    "color": "muted",
+    "bold": false,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "af-custom-label",
+    "x": 717,
+    "y": 267,
+    "w": 296,
+    "h": 21,
+    "text": "Implementation-specific / Non-3GPP",
+    "size": 14.5,
+    "color": "custom",
+    "bold": false,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "n5-name",
+    "x": 475,
+    "y": 186,
+    "w": 213,
+    "h": 25,
+    "text": "N5",
+    "size": 19,
+    "color": "ink",
+    "bold": true,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "n5-service",
+    "x": 473,
+    "y": 213,
+    "w": 226,
+    "h": 26,
+    "text": "Npcf_PolicyAuthorization",
+    "size": 16,
+    "color": "ink",
+    "bold": false,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "n5-transport",
+    "x": 473,
+    "y": 266,
+    "w": 226,
+    "h": 25,
+    "text": "HTTP/2 SBI (h2c)",
+    "size": 15,
+    "color": "muted",
+    "bold": false,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "n7-name",
+    "x": 414,
+    "y": 298,
+    "w": 191,
+    "h": 23,
+    "text": "N7",
+    "size": 18,
+    "color": "ink",
+    "bold": true,
+    "align": "left"
+  },
+  {
+    "kind": "text",
+    "key": "n7-semantic",
+    "x": 414,
+    "y": 322,
+    "w": 195,
+    "h": 23,
+    "text": "Npcf_SMPolicyControl",
+    "size": 15,
+    "color": "muted",
+    "bold": false,
+    "align": "left"
+  },
+  {
+    "kind": "text",
+    "key": "n7-transport",
+    "x": 484,
+    "y": 348,
+    "w": 125,
+    "h": 23,
+    "text": "HTTP/2 SBI",
+    "size": 14,
+    "color": "muted",
+    "bold": false,
+    "align": "left"
+  },
+  {
+    "kind": "text",
+    "key": "n4-name",
+    "x": 414,
+    "y": 431,
+    "w": 155,
+    "h": 24,
+    "text": "N4",
+    "size": 18,
+    "color": "ink",
+    "bold": true,
+    "align": "left"
+  },
+  {
+    "kind": "text",
+    "key": "n4-protocol",
+    "x": 414,
+    "y": 456,
+    "w": 65,
+    "h": 24,
+    "text": "PFCP",
+    "size": 16,
+    "color": "muted",
+    "bold": false,
+    "align": "left"
+  },
+  {
+    "kind": "text",
+    "key": "uu-label",
+    "x": 129,
+    "y": 436,
+    "w": 70,
+    "h": 43,
+    "text": "NR / Uu",
+    "size": 15,
+    "color": "blue",
+    "bold": true,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "n3-name",
+    "x": 273,
+    "y": 439,
+    "w": 48,
+    "h": 24,
+    "text": "N3",
+    "size": 17,
+    "color": "blue",
+    "bold": true,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "n3-protocol",
+    "x": 269,
+    "y": 465,
+    "w": 57,
+    "h": 22,
+    "text": "GTP-U",
+    "size": 13,
+    "color": "blue",
+    "bold": false,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "n6-name",
+    "x": 493,
+    "y": 463,
+    "w": 160,
+    "h": 24,
+    "text": "N6",
+    "size": 19,
+    "color": "blue",
+    "bold": true,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "n6-semantic",
+    "x": 487,
+    "y": 490,
+    "w": 172,
+    "h": 24,
+    "text": "User plane / IP",
+    "size": 16,
+    "color": "blue",
+    "bold": false,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "n6-boundary",
+    "x": 490,
+    "y": 535,
+    "w": 173,
+    "h": 25,
+    "text": "UPF ↔ Data Network",
+    "size": 13.5,
+    "color": "muted",
+    "bold": false,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "custom-api",
+    "x": 786,
+    "y": 309,
+    "w": 253,
+    "h": 26,
+    "text": "Custom HTTP API",
+    "size": 18,
+    "color": "custom",
+    "bold": true,
+    "align": "left"
+  },
+  {
+    "kind": "text",
+    "key": "custom-api-scope",
+    "x": 786,
+    "y": 337,
+    "w": 244,
+    "h": 21,
+    "text": "implementation-specific",
+    "size": 14,
+    "color": "custom",
+    "bold": false,
+    "align": "left"
+  },
+  {
+    "kind": "text",
+    "key": "custom-media-requirements",
+    "x": 686,
+    "y": 430,
+    "w": 75,
+    "h": 45,
+    "text": "IMS 媒體\n需求",
+    "size": 14,
+    "color": "custom",
+    "bold": false,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "mw-p-i",
+    "x": 839,
+    "y": 465,
+    "w": 50,
+    "h": 45,
+    "text": "Mw\nSIP",
+    "size": 14,
+    "color": "orange",
+    "bold": true,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "mw-i-s",
+    "x": 1025,
+    "y": 465,
+    "w": 49,
+    "h": 45,
+    "text": "Mw\nSIP",
+    "size": 14,
+    "color": "orange",
+    "bold": true,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "cx-i-label",
+    "x": 967,
+    "y": 448,
+    "w": 79,
+    "h": 35,
+    "text": "Cx\nDiameter",
+    "size": 13,
+    "color": "cx",
+    "bold": false,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "cx-s-label",
+    "x": 1149,
+    "y": 449,
+    "w": 72,
+    "h": 35,
+    "text": "Cx\nDiameter",
+    "size": 13,
+    "color": "cx",
+    "bold": false,
+    "align": "center"
+  },
+  {
+    "kind": "text",
+    "key": "gm-label",
+    "x": 172,
+    "y": 582,
+    "w": 575,
+    "h": 27,
+    "text": "Gm · SIP REGISTER / INVITE（邏輯流；封包走藍色路徑）",
+    "size": 16,
+    "color": "orange",
+    "bold": true,
+    "align": "left"
+  },
+  {
+    "kind": "text",
+    "key": "access-note",
+    "x": 65,
+    "y": 213,
+    "w": 198,
+    "h": 90,
+    "text": "IMS access path\nUE 的 SIP/IP 封包\n經 gNB、UPF 進入 DN",
+    "size": 17,
+    "color": "muted",
+    "bold": false,
+    "align": "left"
+  },
+  {
+    "kind": "text",
+    "key": "ran-note",
+    "x": 65,
+    "y": 325,
+    "w": 198,
+    "h": 70,
+    "text": "本 PoC：free-ran-ue\n模擬 UE / gNB\nUu 為邏輯示意",
+    "size": 15,
+    "color": "muted",
+    "bold": false,
+    "align": "left"
+  },
+  {
+    "kind": "text",
+    "key": "arrow-note",
+    "x": 818,
+    "y": 586,
+    "w": 410,
+    "h": 39,
+    "text": "箭頭：請求／政策下發方向；回應省略。\nP → I → S 為本專案的 SIP 路由。",
+    "size": 14,
+    "color": "muted",
+    "bold": false,
+    "align": "left"
+  },
+  {
+    "kind": "line",
+    "key": "legend-line-0",
+    "points": [
+      [
+        48,
+        650
+      ],
+      [
+        80,
+        650
+      ]
+    ],
+    "color": "blue",
+    "width": 4.2,
+    "dashed": false,
+    "arrow": false
+  },
+  {
+    "kind": "text",
+    "key": "legend-text-0",
+    "x": 90,
+    "y": 637,
+    "w": 199,
+    "h": 28,
+    "text": "UE IP 路徑",
+    "size": 15,
+    "color": "muted",
+    "bold": false,
+    "align": "left"
+  },
+  {
+    "kind": "line",
+    "key": "legend-line-1",
+    "points": [
+      [
+        275,
+        650
+      ],
+      [
+        307,
+        650
+      ]
+    ],
+    "color": "orange",
+    "width": 2.4,
+    "dashed": false,
+    "arrow": false
+  },
+  {
+    "kind": "text",
+    "key": "legend-text-1",
+    "x": 317,
+    "y": 637,
+    "w": 199,
+    "h": 28,
+    "text": "IMS SIP",
+    "size": 15,
+    "color": "muted",
+    "bold": false,
+    "align": "left"
+  },
+  {
+    "kind": "line",
+    "key": "legend-line-2",
+    "points": [
+      [
+        466,
+        650
+      ],
+      [
+        498,
+        650
+      ]
+    ],
+    "color": "ink",
+    "width": 2.4,
+    "dashed": false,
+    "arrow": false
+  },
+  {
+    "kind": "text",
+    "key": "legend-text-2",
+    "x": 508,
+    "y": 637,
+    "w": 199,
+    "h": 28,
+    "text": "5GC policy / control",
+    "size": 15,
+    "color": "muted",
+    "bold": false,
+    "align": "left"
+  },
+  {
+    "kind": "line",
+    "key": "legend-line-3",
+    "points": [
+      [
+        760,
+        650
+      ],
+      [
+        792,
+        650
+      ]
+    ],
+    "color": "cx",
+    "width": 1.8,
+    "dashed": false,
+    "arrow": false
+  },
+  {
+    "kind": "text",
+    "key": "legend-text-3",
+    "x": 802,
+    "y": 637,
+    "w": 199,
+    "h": 28,
+    "text": "Cx / Diameter",
+    "size": 15,
+    "color": "muted",
+    "bold": false,
+    "align": "left"
+  },
+  {
+    "kind": "line",
+    "key": "legend-line-4",
+    "points": [
+      [
+        1006,
+        650
+      ],
+      [
+        1038,
+        650
+      ]
+    ],
+    "color": "custom",
+    "width": 2.4,
+    "dashed": true,
+    "arrow": false
+  },
+  {
+    "kind": "text",
+    "key": "legend-text-4",
+    "x": 1048,
+    "y": 637,
+    "w": 199,
+    "h": 28,
+    "text": "Custom integration",
+    "size": 15,
+    "color": "muted",
+    "bold": false,
+    "align": "left"
+  },
+  {
+    "kind": "text",
+    "key": "scope-note",
+    "x": 48,
+    "y": 681,
+    "w": 1186,
+    "h": 23,
+    "text": "PoC 範圍：RTP 在 UPF hairpin，不經 CSCF；QoS 僅驗證 PDR / QER 下發，未驗證端到端頻寬保證。",
+    "size": 14,
+    "color": "muted",
+    "bold": false,
+    "align": "left"
+  }
+]

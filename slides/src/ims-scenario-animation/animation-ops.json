@@ -1,0 +1,2130 @@
+[
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 0,
+      "el": "e_fe24c32b"
+    },
+    "box": {
+      "x": 1095375,
+      "y": 2362200,
+      "cx": 0,
+      "cy": 3638550
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 0,
+      "el": "e_3f38f04b"
+    },
+    "box": {
+      "x": 2857500,
+      "y": 2362200,
+      "cx": 0,
+      "cy": 3638550
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 0,
+      "el": "e_eec1d3fd"
+    },
+    "box": {
+      "x": 4619625,
+      "y": 2362200,
+      "cx": 0,
+      "cy": 3638550
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 0,
+      "el": "e_68829dbb"
+    },
+    "box": {
+      "x": 6381750,
+      "y": 2362200,
+      "cx": 0,
+      "cy": 3638550
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 0,
+      "el": "e_e54cdc94"
+    },
+    "box": {
+      "x": 8143875,
+      "y": 2362200,
+      "cx": 0,
+      "cy": 3638550
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 0,
+      "el": "e_421ab3de"
+    },
+    "box": {
+      "x": 1095375,
+      "y": 2781300,
+      "cx": 3524250,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 0,
+      "el": "e_7bac215b"
+    },
+    "box": {
+      "x": 4619625,
+      "y": 3267075,
+      "cx": 3524250,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 0,
+      "el": "e_7c6bd851"
+    },
+    "box": {
+      "x": 4619625,
+      "y": 3324225,
+      "cx": 3524250,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 0,
+      "el": "e_a3f6e086"
+    },
+    "box": {
+      "x": 6381750,
+      "y": 3752850,
+      "cx": 1762125,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 0,
+      "el": "e_a180104c"
+    },
+    "box": {
+      "x": 6381750,
+      "y": 3810000,
+      "cx": 1762125,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 0,
+      "el": "e_5a75a99a"
+    },
+    "box": {
+      "x": 1095375,
+      "y": 4238625,
+      "cx": 5286375,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 0,
+      "el": "e_fe4b3b37"
+    },
+    "box": {
+      "x": 1095375,
+      "y": 4724400,
+      "cx": 5286375,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 0,
+      "el": "e_c6bbf305"
+    },
+    "box": {
+      "x": 6381750,
+      "y": 5210175,
+      "cx": 1762125,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 0,
+      "el": "e_a2efd9e7"
+    },
+    "box": {
+      "x": 6381750,
+      "y": 5267325,
+      "cx": 1762125,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 0,
+      "el": "e_7b096462"
+    },
+    "box": {
+      "x": 1095375,
+      "y": 5695950,
+      "cx": 5286375,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransition",
+    "target": {
+      "slide": 0
+    },
+    "kind": "fade"
+  },
+  {
+    "op": "setNotes",
+    "target": {
+      "slide": 0
+    },
+    "text": "第一幕：講者可在每次點擊後停下來說明，共 7 次點擊。\n前提：5G 註冊、ims PDU session 和 P-CSCF 探索已完成；這不是 5G-AKA 的動畫。\n1. 小明向 P-CSCF 發 REGISTER，P 加 Path，再轉 I-CSCF。\n2. I-CSCF 以 UAR/UAA 查 HSS，選定 S-CSCF 後把 REGISTER 轉過去。為保持畫面簡潔，此段轉送用對白及 S-CSCF 強調表示。\n3. S-CSCF 用 MAR/MAA 向 HSS 取得 IMS AKA 向量。\n4. S-CSCF 回 401，挑戰中的 nonce 承載 RAND、AUTN；這是正常的認證流程。回程經 I、P。\n5. SIM 驗 AUTN、算 RES，以 RES 產生 AKAv1-MD5 的 Digest response，再放入 Authorization 送第二次 REGISTER；不是裸送 RES。圖省略各跳重傳與 SIM 計算細節。\n6. 認證通過後 SAR/SAA 登記 serving S-CSCF 並取 profile；S-CSCF 保存 IMPU、Contact、Path。\n7. 200 OK 經 I、P 回 UE，P-CSCF 也記錄成功的註冊。小華先完成同樣流程，接著才進入下一幕。\n安全概念：K 只留在 SIM/HSS；HSS 的 XRES 不送到 UE。標準服務邏輯與簡化專案路由有差異。\n依據：原簡報第 7、9、10 頁；kamailio-free5gc/pcscf/kamailio.cfg、icscf/kamailio.cfg、scscf/kamailio.cfg。\n官方參考：https://www.kamailio.org/docs/modules/stable/modules/ims_registrar_pcscf.html\n"
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_8aa664f6"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "onClick",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_421ab3de"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_a82e6979"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_c9671fa7"
+    },
+    "effect": "appear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_c9671fa7"
+    },
+    "effect": "motionPath",
+    "duration": 2200,
+    "motionPath": "M 0.0000000 0.0000000 L 0.2890625 0.0000000",
+    "trigger": "withPrev",
+    "delay": 300
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_c9671fa7"
+    },
+    "effect": "disappear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 2200
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_635edadf"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_30c3c387"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_0e3524d5"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "onClick",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_7bac215b"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_7c6bd851"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_1aea2828"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_3038a50e"
+    },
+    "effect": "appear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_3038a50e"
+    },
+    "effect": "motionPath",
+    "duration": 2200,
+    "motionPath": "M 0.0000000 0.0000000 L 0.2890625 0.0000000 L 0.2890625 0.0083333 L 0.0000000 0.0083333",
+    "trigger": "withPrev",
+    "delay": 300
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_3038a50e"
+    },
+    "effect": "disappear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 2200
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_30c3c387"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_447ba73a"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_3e2efc84"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_38cf37ec"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "onClick",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_a3f6e086"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_a180104c"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_c917f88f"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_9866b9b8"
+    },
+    "effect": "appear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_9866b9b8"
+    },
+    "effect": "motionPath",
+    "duration": 2200,
+    "motionPath": "M 0.0000000 0.0000000 L 0.1445312 0.0000000 L 0.1445312 0.0083333 L 0.0000000 0.0083333",
+    "trigger": "withPrev",
+    "delay": 300
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_9866b9b8"
+    },
+    "effect": "disappear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 2200
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_3e2efc84"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_447ba73a"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_f5287217"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "onClick",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_5a75a99a"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_c085754e"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_e226b36c"
+    },
+    "effect": "appear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_e226b36c"
+    },
+    "effect": "motionPath",
+    "duration": 2200,
+    "motionPath": "M 0.0000000 0.0000000 L -0.4335938 0.0000000",
+    "trigger": "withPrev",
+    "delay": 300
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_e226b36c"
+    },
+    "effect": "disappear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 2200
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_c3745872"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_0462082d"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "onClick",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_fe4b3b37"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_afd8abde"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_72a74e37"
+    },
+    "effect": "appear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_72a74e37"
+    },
+    "effect": "motionPath",
+    "duration": 2200,
+    "motionPath": "M 0.0000000 0.0000000 L 0.4335938 0.0000000",
+    "trigger": "withPrev",
+    "delay": 300
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_72a74e37"
+    },
+    "effect": "disappear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 2200
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_3e2efc84"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_ca889da4"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "onClick",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_c6bbf305"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_a2efd9e7"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_82f86698"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_6eb484a9"
+    },
+    "effect": "appear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_6eb484a9"
+    },
+    "effect": "motionPath",
+    "duration": 2200,
+    "motionPath": "M 0.0000000 0.0000000 L 0.1445312 0.0000000 L 0.1445312 0.0083333 L 0.0000000 0.0083333",
+    "trigger": "withPrev",
+    "delay": 300
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_6eb484a9"
+    },
+    "effect": "disappear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 2200
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_3e2efc84"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_447ba73a"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_9a97a643"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "onClick",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_7b096462"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_d7680c4f"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_85a5907a"
+    },
+    "effect": "appear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_85a5907a"
+    },
+    "effect": "motionPath",
+    "duration": 2200,
+    "motionPath": "M 0.0000000 0.0000000 L -0.4335938 0.0000000",
+    "trigger": "withPrev",
+    "delay": 300
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_85a5907a"
+    },
+    "effect": "disappear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 2200
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 0,
+      "el": "e_c3745872"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 1,
+      "el": "e_59627a06"
+    },
+    "box": {
+      "x": 952500,
+      "y": 2362200,
+      "cx": 0,
+      "cy": 3638550
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 1,
+      "el": "e_fbed9837"
+    },
+    "box": {
+      "x": 2476500,
+      "y": 2362200,
+      "cx": 0,
+      "cy": 3638550
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 1,
+      "el": "e_57da48f7"
+    },
+    "box": {
+      "x": 4000500,
+      "y": 2362200,
+      "cx": 0,
+      "cy": 3638550
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 1,
+      "el": "e_4f81b352"
+    },
+    "box": {
+      "x": 5524500,
+      "y": 2362200,
+      "cx": 0,
+      "cy": 3638550
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 1,
+      "el": "e_dedf6646"
+    },
+    "box": {
+      "x": 7048500,
+      "y": 2362200,
+      "cx": 0,
+      "cy": 3638550
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 1,
+      "el": "e_7db7c15d"
+    },
+    "box": {
+      "x": 8572500,
+      "y": 2362200,
+      "cx": 0,
+      "cy": 3638550
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 1,
+      "el": "e_22113ff4"
+    },
+    "box": {
+      "x": 10572750,
+      "y": 2362200,
+      "cx": 0,
+      "cy": 1123950
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 1,
+      "el": "e_ee013def"
+    },
+    "box": {
+      "x": 952500,
+      "y": 2857500,
+      "cx": 3048000,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 1,
+      "el": "e_109e06e4"
+    },
+    "box": {
+      "x": 4000500,
+      "y": 3429000,
+      "cx": 6572250,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 1,
+      "el": "e_585d2c7d"
+    },
+    "box": {
+      "x": 4000500,
+      "y": 3486150,
+      "cx": 6572250,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 1,
+      "el": "e_e213fe81"
+    },
+    "box": {
+      "x": 4000500,
+      "y": 4000500,
+      "cx": 4572000,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 1,
+      "el": "e_9746232c"
+    },
+    "box": {
+      "x": 952500,
+      "y": 4572000,
+      "cx": 7620000,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 1,
+      "el": "e_28586dfe"
+    },
+    "box": {
+      "x": 952500,
+      "y": 5143500,
+      "cx": 7620000,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 1,
+      "el": "e_0864dee3"
+    },
+    "box": {
+      "x": 952500,
+      "y": 5715000,
+      "cx": 7620000,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransition",
+    "target": {
+      "slide": 1
+    },
+    "kind": "fade"
+  },
+  {
+    "op": "setNotes",
+    "target": {
+      "slide": 1
+    },
+    "text": "第二幕：共 6 次點擊。雙方已註冊；在此只教一通成功通話。\n1. 小明發 INVITE，body 的 SDP offer 帶媒體位址、埠及 codec 提案；P-CSCF 依本專案配置送 I-CSCF。\n2. I-CSCF 以 LIR/LIA 查 HSS 的被叫 serving S-CSCF 資料。HSS 查詢是 Diameter Cx，不是 SIP。\n3. I 轉 INVITE 到 S；S 用被叫 IMPU 找 Contact，沿註冊保存的 Path 經被叫 P-CSCF 送小華。\n4. 180 Ringing 回主叫，代表響鈴；省略 100 Trying。\n5. 小華接聽回 200 OK + SDP answer，P-CSCF 此時收齊 offer/answer，觸發下一幕的 N5 預留。\n6. 小明回 ACK。應答沿 Via；ACK 與之後的 BYE 依對話 route set 路由。\n畫面中兩個 P-CSCF 是同一個 Kamailio 程序分別處理主叫、被叫兩個 leg；每端有自己的 PDU session，因此兩端各申請 QoS。\n本圖忠實呈現 PoC 的主叫 P→I→S 路由。標準 IMS 主叫一般先依 Service-Route 到主叫 S-CSCF，再處理被叫側；不要把這個 PoC 當所有營運商網路的完整通話流程。\n省略 183、PRACK、preconditions、AS/TAS 與跨網互通。\n依據：原簡報第 14、23、24 頁；kamailio-free5gc/pcscf/kamailio.cfg request_route 與 INVITE_REPLY；icscf/kamailio.cfg TERMINATING、LIR_REPLY；scscf/kamailio.cfg LOOKUP。\n官方架構參考：https://www.etsi.org/deliver/etsi_ts/123200_123299/123228/18.05.00_60/ts_123228v180500p.pdf\n"
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_bb75fdb3"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "onClick",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_ee013def"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_dbbc615d"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_3f8e3945"
+    },
+    "effect": "appear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_3f8e3945"
+    },
+    "effect": "motionPath",
+    "duration": 2200,
+    "motionPath": "M 0.0000000 0.0000000 L 0.2500000 0.0000000",
+    "trigger": "withPrev",
+    "delay": 300
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_3f8e3945"
+    },
+    "effect": "disappear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 2200
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_ebb3fdae"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_80fd10ad"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_ae779000"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "onClick",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_109e06e4"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_585d2c7d"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_11afe350"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_8b9551ab"
+    },
+    "effect": "appear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_8b9551ab"
+    },
+    "effect": "motionPath",
+    "duration": 2600,
+    "motionPath": "M 0.0000000 0.0000000 L 0.5390625 0.0000000 L 0.5390625 0.0083333 L 0.0000000 0.0083333",
+    "trigger": "withPrev",
+    "delay": 300
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_8b9551ab"
+    },
+    "effect": "disappear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 2600
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_2488d709"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_80fd10ad"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_6b6ddcb7"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "onClick",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_e213fe81"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_84569f17"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_446fc23d"
+    },
+    "effect": "appear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_446fc23d"
+    },
+    "effect": "motionPath",
+    "duration": 2200,
+    "motionPath": "M 0.0000000 0.0000000 L 0.3750000 0.0000000",
+    "trigger": "withPrev",
+    "delay": 300
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_446fc23d"
+    },
+    "effect": "disappear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 2200
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_af0f9928"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_7138ca8a"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_d4816e92"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_7fbb54f5"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "onClick",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_9746232c"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_93e0c663"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_a400fc5f"
+    },
+    "effect": "appear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_a400fc5f"
+    },
+    "effect": "motionPath",
+    "duration": 2200,
+    "motionPath": "M 0.0000000 0.0000000 L -0.6250000 0.0000000",
+    "trigger": "withPrev",
+    "delay": 300
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_a400fc5f"
+    },
+    "effect": "disappear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 2200
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_d4816e92"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_94e2058f"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_d7c7e666"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "onClick",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_28586dfe"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_87214c10"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_1ea4c447"
+    },
+    "effect": "appear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_1ea4c447"
+    },
+    "effect": "motionPath",
+    "duration": 2200,
+    "motionPath": "M 0.0000000 0.0000000 L -0.6250000 0.0000000",
+    "trigger": "withPrev",
+    "delay": 300
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_1ea4c447"
+    },
+    "effect": "disappear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 2200
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_94e2058f"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_8e432c24"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "onClick",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_0864dee3"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_4f26c5bc"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_ac7fd793"
+    },
+    "effect": "appear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_ac7fd793"
+    },
+    "effect": "motionPath",
+    "duration": 2200,
+    "motionPath": "M 0.0000000 0.0000000 L 0.6250000 0.0000000",
+    "trigger": "withPrev",
+    "delay": 300
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_ac7fd793"
+    },
+    "effect": "disappear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 2200
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 1,
+      "el": "e_d4816e92"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 2,
+      "el": "e_25084430"
+    },
+    "box": {
+      "x": 1543050,
+      "y": 4438650,
+      "cx": 9105900,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 2,
+      "el": "e_b89294a5"
+    },
+    "box": {
+      "x": 1543050,
+      "y": 4676775,
+      "cx": 9105900,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 2,
+      "el": "e_44d163c0"
+    },
+    "box": {
+      "x": 8096250,
+      "y": 2000250,
+      "cx": 838200,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 2,
+      "el": "e_a670c0d0"
+    },
+    "box": {
+      "x": 10287000,
+      "y": 2428875,
+      "cx": 0,
+      "cy": 552450
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 2,
+      "el": "e_eb42f5e4"
+    },
+    "box": {
+      "x": 6096000,
+      "y": 2981325,
+      "cx": 4191000,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 2,
+      "el": "e_99c3ab9a"
+    },
+    "box": {
+      "x": 6096000,
+      "y": 2981325,
+      "cx": 0,
+      "cy": 304800
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 2,
+      "el": "e_3481245c"
+    },
+    "box": {
+      "x": 1543050,
+      "y": 2552700,
+      "cx": 0,
+      "cy": 733425
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 2,
+      "el": "e_a5966a63"
+    },
+    "box": {
+      "x": 1543050,
+      "y": 2552700,
+      "cx": 9105900,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 2,
+      "el": "e_afd28e0d"
+    },
+    "box": {
+      "x": 10648950,
+      "y": 2552700,
+      "cx": 0,
+      "cy": 733425
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 2,
+      "el": "e_5e0fbc00"
+    },
+    "box": {
+      "x": 6096000,
+      "y": 2409825,
+      "cx": 0,
+      "cy": 142875
+    }
+  },
+  {
+    "op": "setTransition",
+    "target": {
+      "slide": 2
+    },
+    "kind": "fade"
+  },
+  {
+    "op": "setNotes",
+    "target": {
+      "slide": 2
+    },
+    "text": "第三幕：共 3 次點擊；本幕將前一幕的 200 OK 觸發點放大說明。\n1. P-CSCF 在 200 OK 看到 SDP answer，經本專案 AF shim 建 N5 App Session。PCF 以 N7 通知 SMF，SMF 以 N4 修改 UPF 的 PDR/QER。兩個 leg 各申請一次。媒體語音使用 5QI 1；信令仍使用 5QI 5，不是把整個 IMS session 從 5 改成 1。QoS 失敗時本專案仍允許通話。\n2. 此處示意 ACK 後的 RTP 雙向傳送；真實 SIP 可有 early media，本 PoC 不呈現。藍色兩個封包反向移動，代表兩人說話；UPF 內 hairpin 轉到另一個 UE。圖省略 UE 與 UPF 之間的 gNB/N3，RTP 不經 CSCF。本專案沒有 IMS-AGW/SBC，勿泛化成所有部署都沒有媒體錨點。\n3. 小明掛斷，BYE 走既有對話路由，對端回 200 OK；P-CSCF 於 BYE 釋放兩端 QoS App Session，控制链撤除媒體規則。動畫收起 RTP 路徑、強調控制群及 UPF。圖為控制群示意，不意指 BYE 重新作 LIR。通話結束不等於 IMS deregistration；原 IMS 註冊及 ims PDU session 仍可保留。\n本專案只驗證規則存在，未驗證實際 GBR 頻寬保證或限速。\n依據：原簡報第 14–17、23 頁；kamailio-free5gc/pcscf/kamailio.cfg AF_RESERVE、AF_RELEASE；AF shim 與 QoS 測試。\n"
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_5eaaca50"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "onClick",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_44d163c0"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_a670c0d0"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_eb42f5e4"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_99c3ab9a"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_f343d861"
+    },
+    "effect": "appear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_f343d861"
+    },
+    "effect": "motionPath",
+    "duration": 2300,
+    "motionPath": "M 0.0000000 0.0000000 L 0.1796875 0.0000000 L 0.1796875 0.1430556 L -0.1640625 0.1430556 L -0.1640625 0.1875000",
+    "trigger": "withPrev",
+    "delay": 300
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_f343d861"
+    },
+    "effect": "disappear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 2300
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_f172edd7"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_b1472b54"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_8d9f3b94"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "onClick",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_25084430"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_b89294a5"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_63e4a33e"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_7a2a572d"
+    },
+    "effect": "appear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_3c9a7011"
+    },
+    "effect": "appear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_7a2a572d"
+    },
+    "effect": "motionPath",
+    "duration": 2200,
+    "motionPath": "M 0.0000000 0.0000000 L 0.7468750 0.0000000",
+    "trigger": "withPrev",
+    "delay": 300
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_3c9a7011"
+    },
+    "effect": "motionPath",
+    "duration": 2200,
+    "motionPath": "M 0.0000000 0.0000000 L -0.7468750 0.0000000",
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_7a2a572d"
+    },
+    "effect": "disappear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 2200
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_3c9a7011"
+    },
+    "effect": "disappear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_46193ac2"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_53b5ea0e"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_ba7db63f"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "onClick",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_3481245c"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_a5966a63"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_afd28e0d"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_5e0fbc00"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_93966cc3"
+    },
+    "effect": "fade",
+    "duration": 280,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_25084430"
+    },
+    "effect": "fadeOut",
+    "duration": 300,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_b89294a5"
+    },
+    "effect": "fadeOut",
+    "duration": 300,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_63e4a33e"
+    },
+    "effect": "fadeOut",
+    "duration": 300,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_91173d2f"
+    },
+    "effect": "appear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_91173d2f"
+    },
+    "effect": "motionPath",
+    "duration": 2800,
+    "motionPath": "M 0.0000000 0.0000000 L 0.0000000 -0.1069444 L 0.7468750 -0.1069444 L 0.7468750 0.0000000 L 0.7468750 -0.1069444 L 0.0000000 -0.1069444 L 0.0000000 0.0000000",
+    "trigger": "withPrev",
+    "delay": 300
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_91173d2f"
+    },
+    "effect": "disappear",
+    "duration": 1,
+    "trigger": "withPrev",
+    "delay": 2800
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_cee74776"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_f172edd7"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_b1472b54"
+    },
+    "effect": "pulse",
+    "duration": 420,
+    "trigger": "withPrev",
+    "delay": 0
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "checks": {
+    "N6 ends at DN boundary, not P-CSCF": true,
+    "DN IP reachability is a separate connector": true,
+    "UE and gNB are separate nodes": true,
+    "N3 gNB to UPF": true,
+    "Custom API direction P-CSCF to AF": true,
+    "Policy chain AF to PCF to SMF to UPF": true,
+    "Custom component box and API line are dashed": true,
+    "Two Diameter edges reach one HSS": true,
+    "SIP and user plane have separate geometry and styles": true,
+    "No connector crosses a component interior": true,
+    "All text fits font metrics and canvas bounds": true,
+    "GenOffice layout audit has zero errors and warnings": true,
+    "Actual deck preview rendered at 1920 x 1080": true,
+    "Generated source XML equals slide XML in PPTX": true,
+    "Interface labels do not use http_client or AF shim": true,
+    "HSS role and all CSCF implementations are labeled": true,
+    "N5 names its service": true,
+    "N7 service name verified in local TS 23.502": true
+  },
+  "preview_sha256": "4d355cfc3b21f7790612da56a5b533a52a28a87ed58285986aeb9ffa4f3692a7",
+  "visual_review": "Actual final PNG inspected for labels, arrows, N6 boundary, clipping; no issue found.",
+  "runtime_scope": "Repository inspection only; no live network tests or desktop PowerPoint playback."
+}

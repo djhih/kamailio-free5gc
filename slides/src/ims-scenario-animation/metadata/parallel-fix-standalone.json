@@ -1,0 +1,74 @@
+[
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 2,
+      "el": "e_f172edd7"
+    },
+    "box": {
+      "x": 8934450,
+      "y": 1571625,
+      "cx": 2705100,
+      "cy": 857250
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 2,
+      "el": "e_44d163c0"
+    },
+    "box": {
+      "x": 8096250,
+      "y": 2000250,
+      "cx": 838200,
+      "cy": 0
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 2,
+      "el": "e_a670c0d0"
+    },
+    "box": {
+      "x": 10287000,
+      "y": 2428875,
+      "cx": 0,
+      "cy": 552450
+    }
+  },
+  {
+    "op": "setTransform",
+    "target": {
+      "slide": 2,
+      "el": "e_eb42f5e4"
+    },
+    "box": {
+      "x": 6096000,
+      "y": 2981325,
+      "cx": 4191000,
+      "cy": 0
+    }
+  },
+  {
+    "op": "removeAnimation",
+    "target": {
+      "slide": 2
+    },
+    "seq": 6
+  },
+  {
+    "op": "addAnimation",
+    "target": {
+      "slide": 2,
+      "el": "e_f343d861"
+    },
+    "effect": "motionPath",
+    "trigger": "withPrev",
+    "duration": 2300,
+    "delay": 300,
+    "motionPath": "M 0.0000000 0.0000000 L 0.1796875 0.0000000 L 0.1796875 0.1430556 L -0.1640625 0.1430556 L -0.1640625 0.1875000",
+    "after": 5
+  }
+]

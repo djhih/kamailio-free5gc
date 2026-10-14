@@ -1,0 +1,268 @@
+{
+  "keys": {
+    "title": 0,
+    "subtitle": 1,
+    "a": 2,
+    "a-life": 3,
+    "pa": 4,
+    "pa-life": 5,
+    "i": 6,
+    "i-life": 7,
+    "s": 8,
+    "s-life": 9,
+    "pb": 10,
+    "pb-life": 11,
+    "b": 12,
+    "b-life": 13,
+    "h": 14,
+    "h-life": 15,
+    "m1-line": 16,
+    "m1-label": 17,
+    "m1-note": 18,
+    "m1-dot": 19,
+    "m2-line": 20,
+    "m2-line-return": 21,
+    "m2-label": 22,
+    "m2-note": 23,
+    "m2-dot": 24,
+    "m3-line": 25,
+    "m3-label": 26,
+    "m3-note": 27,
+    "m3-dot": 28,
+    "m4-line": 29,
+    "m4-label": 30,
+    "m4-note": 31,
+    "m4-dot": 32,
+    "m5-line": 33,
+    "m5-label": 34,
+    "m5-note": 35,
+    "m5-dot": 36,
+    "m6-line": 37,
+    "m6-label": 38,
+    "m6-note": 39,
+    "m6-dot": 40,
+    "footer": 41
+  },
+  "steps": [
+    {
+      "label": "INVITE + SDP offer",
+      "show": [
+        "m1-label",
+        "m1-line",
+        "m1-note"
+      ],
+      "packets": [
+        {
+          "key": "m1-dot",
+          "path": [
+            [
+              0,
+              0
+            ],
+            [
+              320,
+              0
+            ]
+          ],
+          "duration": 2200
+        }
+      ],
+      "pulse": [
+        "pa",
+        "i"
+      ]
+    },
+    {
+      "label": "LIR / LIA",
+      "show": [
+        "m2-label",
+        "m2-line",
+        "m2-line-return",
+        "m2-note"
+      ],
+      "packets": [
+        {
+          "key": "m2-dot",
+          "path": [
+            [
+              0,
+              0
+            ],
+            [
+              690,
+              0
+            ],
+            [
+              690,
+              6
+            ],
+            [
+              0,
+              6
+            ]
+          ],
+          "duration": 2600
+        }
+      ],
+      "pulse": [
+        "h",
+        "i"
+      ]
+    },
+    {
+      "label": "INVITE → S-CSCF → Path",
+      "show": [
+        "m3-label",
+        "m3-line",
+        "m3-note"
+      ],
+      "packets": [
+        {
+          "key": "m3-dot",
+          "path": [
+            [
+              0,
+              0
+            ],
+            [
+              480,
+              0
+            ]
+          ],
+          "duration": 2200
+        }
+      ],
+      "pulse": [
+        "s",
+        "pb",
+        "b"
+      ]
+    },
+    {
+      "label": "180 Ringing",
+      "show": [
+        "m4-label",
+        "m4-line",
+        "m4-note"
+      ],
+      "packets": [
+        {
+          "key": "m4-dot",
+          "path": [
+            [
+              0,
+              0
+            ],
+            [
+              -800,
+              0
+            ]
+          ],
+          "duration": 2200
+        }
+      ],
+      "pulse": [
+        "b",
+        "a"
+      ]
+    },
+    {
+      "label": "200 OK + SDP answer",
+      "show": [
+        "m5-label",
+        "m5-line",
+        "m5-note"
+      ],
+      "packets": [
+        {
+          "key": "m5-dot",
+          "path": [
+            [
+              0,
+              0
+            ],
+            [
+              -800,
+              0
+            ]
+          ],
+          "duration": 2200
+        }
+      ],
+      "pulse": [
+        "a"
+      ]
+    },
+    {
+      "label": "ACK",
+      "show": [
+        "m6-label",
+        "m6-line",
+        "m6-note"
+      ],
+      "packets": [
+        {
+          "key": "m6-dot",
+          "path": [
+            [
+              0,
+              0
+            ],
+            [
+              800,
+              0
+            ]
+          ],
+          "duration": 2200
+        }
+      ],
+      "pulse": [
+        "b"
+      ]
+    }
+  ],
+  "ids": {
+    "title": "e_adab5b1c",
+    "subtitle": "e_ababbe2f",
+    "a": "e_94e2058f",
+    "a-life": "e_59627a06",
+    "pa": "e_ebb3fdae",
+    "pa-life": "e_fbed9837",
+    "i": "e_80fd10ad",
+    "i-life": "e_57da48f7",
+    "s": "e_af0f9928",
+    "s-life": "e_4f81b352",
+    "pb": "e_7138ca8a",
+    "pb-life": "e_dedf6646",
+    "b": "e_d4816e92",
+    "b-life": "e_7db7c15d",
+    "h": "e_2488d709",
+    "h-life": "e_22113ff4",
+    "m1-line": "e_ee013def",
+    "m1-label": "e_bb75fdb3",
+    "m1-note": "e_dbbc615d",
+    "m1-dot": "e_3f8e3945",
+    "m2-line": "e_109e06e4",
+    "m2-line-return": "e_585d2c7d",
+    "m2-label": "e_ae779000",
+    "m2-note": "e_11afe350",
+    "m2-dot": "e_8b9551ab",
+    "m3-line": "e_e213fe81",
+    "m3-label": "e_6b6ddcb7",
+    "m3-note": "e_84569f17",
+    "m3-dot": "e_446fc23d",
+    "m4-line": "e_9746232c",
+    "m4-label": "e_7fbb54f5",
+    "m4-note": "e_93e0c663",
+    "m4-dot": "e_a400fc5f",
+    "m5-line": "e_28586dfe",
+    "m5-label": "e_d7c7e666",
+    "m5-note": "e_87214c10",
+    "m5-dot": "e_1ea4c447",
+    "m6-line": "e_0864dee3",
+    "m6-label": "e_8e432c24",
+    "m6-note": "e_4f26c5bc",
+    "m6-dot": "e_ac7fd793",
+    "footer": "e_dc004f2c"
+  }
+}

@@ -1,0 +1,90 @@
+{
+ "topic": "free5gc 與 Kamailio 的對接",
+ "core_hook": "SIP 不經過 AMF／SMF：free5gc 與 Kamailio 只在五個地方接觸",
+ "pages": [
+  {
+   "title": "free5gc × Kamailio 對接",
+   "type": "cover",
+   "layout": "cover_split_color",
+   "brief": "Title, subtitle, five integration points listed on orange block.",
+   "image_queries": []
+  },
+  {
+   "title": "五個對接點",
+   "type": "content",
+   "layout": "left_text_right_image",
+   "brief": "Left list of five points; right topology diagram with numbered badges.",
+   "image_queries": []
+  },
+  {
+   "title": "① 使用者面：UPF 是唯一的橋",
+   "type": "content",
+   "layout": "two_column_comparison",
+   "brief": "corenet vs dnnet columns with UPF bridging; no NAT box.",
+   "image_queries": []
+  },
+  {
+   "title": "② ims DNN 與預設 QoS",
+   "type": "data",
+   "layout": "kpi_cards_row",
+   "brief": "Four KPI cards: ims, 10.62/16, 5QI 5, 10 Mbps; footer about 5QI 1.",
+   "image_queries": []
+  },
+  {
+   "title": "③ P-CSCF discovery",
+   "type": "content",
+   "layout": "timeline_horizontal",
+   "brief": "Four steps of PCO-based discovery.",
+   "image_queries": []
+  },
+  {
+   "title": "④ 用戶身分與金鑰",
+   "type": "content",
+   "layout": "three_column_cards",
+   "brief": "UDR vs PyHSS vs keys columns.",
+   "image_queries": []
+  },
+  {
+   "title": "⑤ Policy／QoS",
+   "type": "content",
+   "layout": "left_text_right_image",
+   "brief": "Vertical chain P-CSCF→AF shim→PCF→SMF→UPF with labels; left notes.",
+   "image_queries": []
+  },
+  {
+   "title": "AF shim 送給 PCF 的內容",
+   "type": "data",
+   "layout": "two_by_two_grid",
+   "brief": "Four cells of AppSessionContext fields.",
+   "image_queries": []
+  },
+  {
+   "title": "對接時踩到的細節",
+   "type": "data",
+   "layout": "kpi_cards_row",
+   "brief": "Five gotcha cards.",
+   "image_queries": []
+  },
+  {
+   "title": "怎麼證明真的接上了",
+   "type": "content",
+   "layout": "two_column_comparison",
+   "brief": "03 vs 05 tests.",
+   "image_queries": []
+  },
+  {
+   "title": "還沒打通的地方",
+   "type": "content",
+   "layout": "hero_big_number",
+   "brief": "Big 6 with six gap rows.",
+   "image_queries": []
+  },
+  {
+   "title": "改善方向",
+   "type": "closing",
+   "layout": "closing_cta",
+   "brief": "Three next steps and references.",
+   "image_queries": []
+  }
+ ]
+}

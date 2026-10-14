@@ -1,0 +1,319 @@
+{
+  "keys": {
+    "title": 0,
+    "subtitle": 1,
+    "ue": 2,
+    "ue-life": 3,
+    "p": 4,
+    "p-life": 5,
+    "i": 6,
+    "i-life": 7,
+    "s": 8,
+    "s-life": 9,
+    "h": 10,
+    "h-life": 11,
+    "aside": 12,
+    "m1-line": 13,
+    "m1-label": 14,
+    "m1-note": 15,
+    "m1-dot": 16,
+    "m2-line": 17,
+    "m2-line-return": 18,
+    "m2-label": 19,
+    "m2-note": 20,
+    "m2-dot": 21,
+    "m3-line": 22,
+    "m3-line-return": 23,
+    "m3-label": 24,
+    "m3-note": 25,
+    "m3-dot": 26,
+    "m4-line": 27,
+    "m4-label": 28,
+    "m4-note": 29,
+    "m4-dot": 30,
+    "m5-line": 31,
+    "m5-label": 32,
+    "m5-note": 33,
+    "m5-dot": 34,
+    "m6-line": 35,
+    "m6-line-return": 36,
+    "m6-label": 37,
+    "m6-note": 38,
+    "m6-dot": 39,
+    "m7-line": 40,
+    "m7-label": 41,
+    "m7-note": 42,
+    "m7-dot": 43,
+    "footer": 44
+  },
+  "steps": [
+    {
+      "label": "REGISTER",
+      "show": [
+        "m1-label",
+        "m1-line",
+        "m1-note"
+      ],
+      "packets": [
+        {
+          "key": "m1-dot",
+          "path": [
+            [
+              0,
+              0
+            ],
+            [
+              370,
+              0
+            ]
+          ],
+          "duration": 2200
+        }
+      ],
+      "pulse": [
+        "p",
+        "i"
+      ]
+    },
+    {
+      "label": "UAR / UAA",
+      "show": [
+        "m2-label",
+        "m2-line",
+        "m2-line-return",
+        "m2-note"
+      ],
+      "packets": [
+        {
+          "key": "m2-dot",
+          "path": [
+            [
+              0,
+              0
+            ],
+            [
+              370,
+              0
+            ],
+            [
+              370,
+              6
+            ],
+            [
+              0,
+              6
+            ]
+          ],
+          "duration": 2200
+        }
+      ],
+      "pulse": [
+        "i",
+        "h",
+        "s"
+      ]
+    },
+    {
+      "label": "MAR / MAA",
+      "show": [
+        "m3-label",
+        "m3-line",
+        "m3-line-return",
+        "m3-note"
+      ],
+      "packets": [
+        {
+          "key": "m3-dot",
+          "path": [
+            [
+              0,
+              0
+            ],
+            [
+              185,
+              0
+            ],
+            [
+              185,
+              6
+            ],
+            [
+              0,
+              6
+            ]
+          ],
+          "duration": 2200
+        }
+      ],
+      "pulse": [
+        "s",
+        "h"
+      ]
+    },
+    {
+      "label": "401：RAND + AUTN",
+      "show": [
+        "m4-label",
+        "m4-line",
+        "m4-note"
+      ],
+      "packets": [
+        {
+          "key": "m4-dot",
+          "path": [
+            [
+              0,
+              0
+            ],
+            [
+              -555,
+              0
+            ]
+          ],
+          "duration": 2200
+        }
+      ],
+      "pulse": [
+        "ue"
+      ]
+    },
+    {
+      "label": "REGISTER + Authorization",
+      "show": [
+        "m5-label",
+        "m5-line",
+        "m5-note"
+      ],
+      "packets": [
+        {
+          "key": "m5-dot",
+          "path": [
+            [
+              0,
+              0
+            ],
+            [
+              555,
+              0
+            ]
+          ],
+          "duration": 2200
+        }
+      ],
+      "pulse": [
+        "s"
+      ]
+    },
+    {
+      "label": "SAR / SAA",
+      "show": [
+        "m6-label",
+        "m6-line",
+        "m6-line-return",
+        "m6-note"
+      ],
+      "packets": [
+        {
+          "key": "m6-dot",
+          "path": [
+            [
+              0,
+              0
+            ],
+            [
+              185,
+              0
+            ],
+            [
+              185,
+              6
+            ],
+            [
+              0,
+              6
+            ]
+          ],
+          "duration": 2200
+        }
+      ],
+      "pulse": [
+        "s",
+        "h"
+      ]
+    },
+    {
+      "label": "200 OK：註冊完成",
+      "show": [
+        "m7-label",
+        "m7-line",
+        "m7-note"
+      ],
+      "packets": [
+        {
+          "key": "m7-dot",
+          "path": [
+            [
+              0,
+              0
+            ],
+            [
+              -555,
+              0
+            ]
+          ],
+          "duration": 2200
+        }
+      ],
+      "pulse": [
+        "ue"
+      ]
+    }
+  ],
+  "ids": {
+    "title": "e_628e10f8",
+    "subtitle": "e_26defeaa",
+    "ue": "e_c3745872",
+    "ue-life": "e_fe24c32b",
+    "p": "e_635edadf",
+    "p-life": "e_3f38f04b",
+    "i": "e_30c3c387",
+    "i-life": "e_eec1d3fd",
+    "s": "e_3e2efc84",
+    "s-life": "e_68829dbb",
+    "h": "e_447ba73a",
+    "h-life": "e_e54cdc94",
+    "aside": "e_3b9a0aa0",
+    "m1-line": "e_421ab3de",
+    "m1-label": "e_8aa664f6",
+    "m1-note": "e_a82e6979",
+    "m1-dot": "e_c9671fa7",
+    "m2-line": "e_7bac215b",
+    "m2-line-return": "e_7c6bd851",
+    "m2-label": "e_0e3524d5",
+    "m2-note": "e_1aea2828",
+    "m2-dot": "e_3038a50e",
+    "m3-line": "e_a3f6e086",
+    "m3-line-return": "e_a180104c",
+    "m3-label": "e_38cf37ec",
+    "m3-note": "e_c917f88f",
+    "m3-dot": "e_9866b9b8",
+    "m4-line": "e_5a75a99a",
+    "m4-label": "e_f5287217",
+    "m4-note": "e_c085754e",
+    "m4-dot": "e_e226b36c",
+    "m5-line": "e_fe4b3b37",
+    "m5-label": "e_0462082d",
+    "m5-note": "e_afd8abde",
+    "m5-dot": "e_72a74e37",
+    "m6-line": "e_c6bbf305",
+    "m6-line-return": "e_a2efd9e7",
+    "m6-label": "e_ca889da4",
+    "m6-note": "e_82f86698",
+    "m6-dot": "e_6eb484a9",
+    "m7-line": "e_7b096462",
+    "m7-label": "e_9a97a643",
+    "m7-note": "e_d7680c4f",
+    "m7-dot": "e_85a5907a",
+    "footer": "e_ad0f63aa"
+  }
+}

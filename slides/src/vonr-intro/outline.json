@@ -1,0 +1,202 @@
+{
+ "topic": "VoNR over IMS 入門與 kamailio-free5gc 的實作方式",
+ "core_hook": "5G 核心網不會打電話：VoNR 靠 IMS 用 SIP 談好，再經 N5 讓語音升級成 5QI 1",
+ "pages": [
+  {
+   "title": "VoNR over IMS × Kamailio",
+   "type": "cover",
+   "layout": "cover_split_color",
+   "brief": "Title 'VoNR over IMS × Kamailio', subtitle '用 free5gc + Kamailio 跑一通 5G 語音', left navy block 60%, right orange block 40% with stack: free5gc 4.2.3 / Kamailio 6.1.4 / PyHSS 2.0.0 / free-ran-ue 2.5.0. Date 2026-10.",
+   "image_queries": []
+  },
+  {
+   "title": "5GC 只管連線，不懂打電話",
+   "type": "content",
+   "layout": "two_column_comparison",
+   "brief": "Left (blue) 5GC 做的事: 5G-AKA 認證 (AMF/AUSF/UDM), 建 PDU session 配 IP (SMF), 轉送封包 (UPF), QoS 政策 (PCF). Right (orange) 打電話還缺: 定址, 服務認證, 通話控制, 向網路要語音 QoS → 這就是 IMS. Bottom line: VoLTE 與 VoNR 背後都是 IMS.",
+   "image_queries": []
+  },
+  {
+   "title": "IMS 是什麼？營運商自己的通話平台",
+   "type": "content",
+   "layout": "left_text_right_image",
+   "brief": "Left: IMS = IP Multimedia Subsystem，3GPP 在 Release 5 首次定義，用 SIP 在 IP 網路上提供電話、視訊、簡訊等服務；與接取技術無關：同一套 IMS 同時服務 VoLTE (4G)、VoNR (5G)、VoWiFi。比喻：5GC 是公路，IMS 是電話公司的總機與客服。Right: drawn three-layer cake: 服務層 (TAS 補充服務、語音信箱、會議；本專案沒有) / 控制層 (P/I/S-CSCF + HSS，本專案的 Kamailio + PyHSS) / 接取層 (5G NR + 5GC、LTE、Wi-Fi). ",
+   "image_queries": []
+  },
+  {
+   "title": "為什麼不直接用 LINE 打就好？",
+   "type": "content",
+   "layout": "two_column_comparison",
+   "brief": "Comparison table OTT 通話 (LINE/WhatsApp) vs 營運商 IMS 通話 rows: 網路品質 best effort 與其他流量搶 (5QI 9) vs 專屬 GBR 語音通道 (5QI 1); 身分 App 帳號+密碼 vs SIM 卡金鑰 (IMS AKA); 號碼 只能打同 App vs 電話號碼，可打市話、跨營運商; 緊急電話 不支援 vs 112/119 必須支援; 介面 另裝 App vs 手機內建撥號器. Takeaway: IMS 的價值是『網路知道這是通話』.",
+   "image_queries": []
+  },
+  {
+   "title": "SIP 談、SDP 描述、RTP 傳聲音",
+   "type": "content",
+   "layout": "three_column_cards",
+   "brief": "Three cards: SIP (RFC 3261, 類 HTTP 純文字; REGISTER/INVITE/ACK/BYE; 經 CSCF proxy 轉送), SDP (放在 SIP body; c= IP, m=audio port, codec 例 PCMU), RTP (真正語音, 兩端直接互送, 不經任何 CSCF). Footer: IMS 用 3GPP 擴充 SIP (TS 24.229).",
+   "image_queries": []
+  },
+  {
+   "title": "拆開一則 SIP INVITE",
+   "type": "content",
+   "layout": "left_text_right_image",
+   "brief": "Left: annotated explanations: request line = 動作+對象 (像 HTTP 的 GET URL); Via = 回程路徑, 每個 proxy 加一層; From/To/Call-ID/CSeq = 誰打給誰、這通是哪一通、第幾則; Contact = 之後直接找我的位址; 空行之後是 SDP body. Right: dark code panel with real-looking INVITE from note.md: INVITE sip:208930000000002@ims.mnc093.mcc208.3gppnetwork.org SIP/2.0, Via SIP/2.0/UDP 10.62.0.1:5060, From, To, Call-ID, CSeq 1 INVITE, Contact, Content-Type application/sdp, v=0, c=IN IP4 10.62.0.1, m=audio 6000 RTP/AVP 0. Response codes row: 100 Trying / 180 Ringing / 200 OK / 401 Unauthorized / 404 Not Found.",
+   "image_queries": []
+  },
+  {
+   "title": "IMS 核心：三種 CSCF + HSS",
+   "type": "data",
+   "layout": "two_by_two_grid",
+   "brief": "2x2 grid. P-CSCF (門口接待), I-CSCF (總機: UAR/LIR), S-CSCF (專屬承辦: MAR/SAR, 依 Path 路由), HSS (資料室 PyHSS, Cx). Note: 三個 CSCF 都是 Kamailio.",
+   "image_queries": []
+  },
+  {
+   "title": "一個 IMSI，三種身分",
+   "type": "content",
+   "layout": "three_column_cards",
+   "brief": "Top root box: IMSI 208930000000001 (USIM 上的號碼; MCC 208 + MNC 93 + MSIN). Three cards below: SUPI imsi-208930000000001 (5G 核心網用, 存在 UDR); IMPI 208930000000001@ims.mnc093.mcc208.3gppnetwork.org (IMS 私有身分 = 帳號, 只有 HSS 與 S-CSCF 看得到); IMPU sip:208930000000001@ims... (公開身分 = 電話號碼, 別人撥這個, 一人可有多個). Footer: 無 ISIM 時依 TS 23.003 從 IMSI 推導; MNC 在網域裡要補成三位 mnc093; UDR 與 PyHSS 存同一組 K/OPc 但各自的 SQN.",
+   "image_queries": []
+  },
+  {
+   "title": "IMS AKA：用 SIM 卡證明你是你",
+   "type": "content",
+   "layout": "timeline_horizontal",
+   "brief": "Steps: 0 前提 SIM 卡與 HSS 共享祕密金鑰 K (加上 OPc)，K 永遠不在網路上傳; 1 S-CSCF 向 HSS 要認證向量 (MAR): RAND 隨機數、AUTN 網路的證明、XRES 預期答案; 2 S-CSCF 回 401，把 RAND+AUTN 放在 nonce; 3 UE 用 SIM 驗 AUTN → 確認是真網路（雙向認證），再算出 RES; 4 第二次 REGISTER 帶 RES，S-CSCF 比對 RES = XRES → SAR → 200 OK. Footnote: 演算法 Milenage, AKAv1-MD5 (RFC 3310); SQN 不同步時 UE 回 AUTS 重新同步.",
+   "image_queries": []
+  },
+  {
+   "title": "IMS 註冊的訊息階梯",
+   "type": "content",
+   "layout": "left_text_right_image",
+   "brief": "Right: ladder diagram drawn with shapes: lifelines UE, P-CSCF, I-CSCF, S-CSCF, HSS; messages: REGISTER(無憑證) UE→P→I; UAR/UAA I↔HSS; REGISTER I→S; MAR/MAA S↔HSS; 401 (RAND, AUTN) S→UE; REGISTER(RES) UE→P→I→S; SAR/SAA S↔HSS; 200 OK S→UE. Left text: 兩個來回: 第一次只為了被挑戰; P-CSCF 加 Path（之後來電才會繞回它）與 P-Visited-Network-ID; 第二次 I-CSCF 不必再選 S-CSCF.",
+   "image_queries": []
+  },
+  {
+   "title": "5GC 與 IMS 只有 3 個接點",
+   "type": "content",
+   "layout": "hero_big_number",
+   "brief": "Huge '3' on left. Right three rows: N6, PCO, N5. Footnote: UDR 與 HSS 之間沒有介面.",
+   "image_queries": []
+  },
+  {
+   "title": "kamailio-free5gc 專案拓撲",
+   "type": "content",
+   "layout": "left_text_right_image",
+   "brief": "Left text: corenet / dnnet, UPF 跨中間; P-CSCF 10.100.100.10:5060 etc. Right: drawn topology diagram.",
+   "image_queries": []
+  },
+  {
+   "title": "一張圖看懂六種協定",
+   "type": "data",
+   "layout": "two_by_two_grid",
+   "brief": "Six tiles (3x2): SIP — Gm/Mw, 談通話 (UE↔CSCF, CSCF 之間); Diameter — Cx/Rx, 電信界的 AAA 查詢協定, CSCF 問 HSS; HTTP/2 SBI — N5/N7, 5GC 內部的 REST API (JSON); PFCP — N4, SMF 指揮 UPF 裝規則; GTP-U — N3, 把 UE 的 IP 封包包進隧道送到 UPF; RTP — 語音本身, 每 20 ms 一包. Analogy line per tile. Footer: 同一通電話會同時用到這六種.",
+   "image_queries": []
+  },
+  {
+   "title": "一通電話的訊息階梯",
+   "type": "content",
+   "layout": "left_text_right_image",
+   "brief": "Right: ladder UE1, P-CSCF, I-CSCF, S-CSCF, UE2 (HSS omitted, LIR note): INVITE (SDP offer) UE1→P→I (LIR 查被叫在哪)→S→P→UE2; 180 Ringing back; 200 OK (SDP answer) back; marker at P-CSCF '雙方 SDP 已知 → N5 要 QoS'; ACK; RTP UE1⇄UE2 直接 (經 UPF hairpin); BYE → P-CSCF 釋放 QoS. Left text: P-CSCF 出現兩次 (主叫端出、被叫端進, 靠 Path); 為什麼等 200 OK 才要 QoS: 這時 offer 與 answer 都確定; SIP 走 CSCF, RTP 不走.",
+   "image_queries": []
+  },
+  {
+   "title": "QoS 迴圈：從 SDP 到 UPF 規則",
+   "type": "content",
+   "layout": "timeline_horizontal",
+   "brief": "Chain SDP → N5 → PCF → N7 → SMF/N4 → UPF with descriptions; note free5gc 不真正限速.",
+   "image_queries": []
+  },
+  {
+   "title": "5QI：網路給每種流量的服務等級",
+   "type": "data",
+   "layout": "kpi_cards_row",
+   "brief": "Three cards with standard TS 23.501 values: 5QI 9 — Non-GBR, 延遲預算 300 ms, 錯誤率 10^-6, 一般上網 (internet DNN 預設); 5QI 5 — Non-GBR, 延遲預算 100 ms, 錯誤率 10^-6, 優先權最高, IMS 信令 (ims DNN 預設); 5QI 1 — GBR 保證頻寬, 延遲預算 100 ms, 錯誤率 10^-2 (語音可容忍少量掉包但不能延遲), 通話中由 N5 觸發. Analogy: 一般車道 / 公車專用道 / 救護車通道. Footer: 真正的頻寬保證在 gNB 排程與 UPF 執行.",
+   "image_queries": []
+  },
+  {
+   "title": "Kamailio 講 Rx，free5gc 只講 N5",
+   "type": "content",
+   "layout": "two_column_comparison",
+   "brief": "Left ims_qos Rx; right PCF N5; middle AF shim; bottom simplifications.",
+   "image_queries": []
+  },
+  {
+   "title": "現行 AF shim 的五個問題",
+   "type": "data",
+   "layout": "kpi_cards_row",
+   "brief": "Five cards: 自訂 JSON; AF 邏輯散在 cfg; PCF 通知只寫 log; 同步 HTTP; 信令沒有 QoS. Root cause band.",
+   "image_queries": []
+  },
+  {
+   "title": "設計原則：各司其職",
+   "type": "content",
+   "layout": "three_column_cards",
+   "brief": "Three columns: 5GC/free5gc 負責 UE 註冊、PDU session、QoS 控制、policy、user plane 轉送; IMS/Kamailio 負責 SIP 註冊、SIP session 控制、呼叫路由、IMS 用戶與 session 狀態; 語音媒體 RTP 走 5GC 依 policy 建立的 QoS flow. Bottom: 重點不是讓 AMF、SMF 處理 SIP，而是讓 IMS 與 5GC 正確交換媒體需求與 policy；規格依據 TS 23.503 附錄 C（PCF 必須支援 Rx 的 IMS AF）.",
+   "image_queries": []
+  },
+  {
+   "title": "IMS 與 5GC 交換什麼",
+   "type": "content",
+   "layout": "two_column_comparison",
+   "brief": "Left IMS → 5GC: 通話接通 媒體需求 AAR → POST app-sessions (主被叫各一次, 29.513 B.2); 通話修改 AAR → PATCH (B.3); 通話結束 STR → delete (B.4); 註冊時 信令 flow 與事件訂閱 (B.5–B.8). Right 5GC → IMS: PDU session 釋放 terminate → ASR → 結束通話; 資源配置成功/失敗 → RAR; 接取類型、PLMN 變更 → RAR. Middle: 互通 NF (Rx ↔ N5).",
+   "image_queries": []
+  },
+  {
+   "title": "各 NF 的修改範圍",
+   "type": "data",
+   "layout": "two_by_two_grid",
+   "brief": "Table of NFs verified against free5gc v4.3.0: AMF imsVoPS 已支援但專案設 0 → 改設定; SMF PCO P-CSCF IPv4 已支援; SMF PCF 更新後沒送 N1N2 給 gNB/UE → 要補 network-requested modification（高）; PCF N5 已支援 → 實測; UPF 不改; UDM/UDR/AUSF/NRF/NSSF 不改（HSS 獨立）; Rx/N5 Adapter 新寫（高）; Kamailio 改用 ims_qos 設定. Source: HackMD NF modification plan.",
+   "image_queries": []
+  },
+  {
+   "title": "NF 修改計畫：五個階段",
+   "type": "content",
+   "layout": "timeline_horizontal",
+   "brief": "Phases: P0 前置（抓包測試、imsVoPS=1、確認 ims_qos AVP、free-ran-ue N2 modify）; P1 Adapter 媒體 QoS; P2 SMF 補 N1N2 讓 QoS flow 到 gNB/UE; P3 5GC 事件回傳 ASR/RAR; P4 註冊時交換與 BSF.",
+   "image_queries": []
+  },
+  {
+   "title": "下一步",
+   "type": "closing",
+   "layout": "closing_cta",
+   "brief": "Three steps: 跑一次端到端 01-up.sh → 03-call-test.sh; 決定重建範圍（只做 P-CSCF 或全部）; Phase 0 測試改抓包判斷. Right column references: 3gpp-r17/ 規格（TS 23.228、24.229、29.514、29.562、33.203）; 文件 vonr-ims-nf-plan.md、vonr-ims-dev-process.md、note.md、docs/.",
+   "image_queries": []
+  },
+  {
+   "title": "附錄 A：為什麼用 PyHSS",
+   "type": "content",
+   "layout": "left_text_right_image",
+   "brief": "Left: 需求 — Kamailio I/S-CSCF 只會用 Diameter Cx 查用戶; free5gc 沒有 HSS 也不講 Cx, 所以要另一個 Cx server. 選 PyHSS 的理由: 開源 Python、支援 Cx、REST API 開戶 (04-add-ims-subscribers.sh)、現成容器映像. 代價: 用戶存兩份 (UDR + PyHSS), SQN 各自計數. Right: drawn deployment: I-CSCF/S-CSCF --Cx Diameter 3868--> pyhss-diameter (10.100.100.20); pyhss-hss (邏輯); pyhss-api :8080 <- 開戶腳本; 三者經 Redis 佇列溝通, 共用一個 SQLite 檔 (pyhss-db volume).",
+   "image_queries": []
+  },
+  {
+   "title": "附錄 B：HSS 在做什麼、記了什麼",
+   "type": "data",
+   "layout": "two_by_two_grid",
+   "brief": "Top strip: HSS 的四個工作 = 回答 Cx 的 UAR (選 S-CSCF)、MAR (算認證向量並推進 SQN)、SAR (記下由哪台 S-CSCF 服務並回 profile/iFC)、LIR (回答被叫在哪台 S-CSCF). 2x2 grid of PyHSS records: APN (ims 資料網路); AUC (K、OPc、AMF、SQN、演算法 milenage — 最敏感); SUBSCRIBER (IMSI ↔ AUC、MSISDN、enabled; MAR 先查這筆); IMS_SUBSCRIBER (IMSI、MSISDN 清單 / IMPU 比對、S-CSCF 與 P-CSCF realm、iFC 範本 default_ifc.xml、Sh profile、執行期記下目前的 S-CSCF).",
+   "image_queries": []
+  },
+  {
+   "title": "附錄 C：P-CSCF 在做什麼",
+   "type": "content",
+   "layout": "two_column_comparison",
+   "brief": "Top: 定位 = UE 唯一入口 (Gm), 10.100.100.10:5060; 模組 ims_registrar_pcscf, ims_usrloc_pcscf, path, ims_dialog, sdpops, http_client. Left 註冊時: add_path_received 加 Path; 加 P-Visited-Network-ID (缺了 I-CSCF 回 400); 一律轉給 I-CSCF; 只有 200 OK 才 pcscf_save 記下 IMPU↔contact (401 不記). Right 通話時: 用來源 IP 判斷方向 (UE pool = 主叫, 其他 = 被叫); record_route 留在路徑上; 先存 SDP offer, 200 OK 時帶 offer+answer 經 http_client 呼叫 AF shim; BYE 釋放; 一通電話兩個 leg 各要一次, key = Call-ID + UE IP. Footer: 為什麼要 shim: PCF 只開 HTTP/2 cleartext (h2c), http_client (libcurl) 不能直接講; 同步呼叫最多卡 worker 2 秒.",
+   "image_queries": []
+  },
+  {
+   "title": "附錄 D：I-CSCF 在做什麼",
+   "type": "content",
+   "layout": "three_column_cards",
+   "brief": "Three cards: UAR (REGISTER: I_perform_user_authorization_request 問 HSS 用哪台 S-CSCF, I_scscf_select 選出後轉送; 401 回來時保留清單, 第二次 REGISTER 不再 UAR); LIR (非 REGISTER 的新請求: I_perform_location_information_request 問被叫在哪台 S-CSCF, 一定要 I_scscf_select 否則 R-URI 走 DNS 失敗 478); 不存狀態 (只靠 HSS 回答與 S-CSCF pool 表 sqlite icscf.db; 模組 ims_icscf + cdp; 10.100.100.22:4060). Footer: 與標準差異: 本專案主叫 INVITE 由 P-CSCF 直接送 I-CSCF; 標準是先依 Service-Route 到主叫自己的 S-CSCF 再找被叫.",
+   "image_queries": []
+  },
+  {
+   "title": "附錄 E：S-CSCF 在做什麼",
+   "type": "content",
+   "layout": "timeline_horizontal",
+   "brief": "Steps: 1 第一次 REGISTER: ims_www_authenticate 沒憑證 → ims_www_challenge 送 MAR → 401 (AKAv1-MD5); 2 第二次 REGISTER: 驗 RES, 錯回 403, 收到 AUTS 走 ims_www_resync_auth; 3 save(): 送 SAR, 把 IMPU↔contact、Path、user profile 存進 ims_usrloc_scscf (記憶體, 重啟就沒); 4 來電: 拿掉 I-CSCF 塞的 Route (無 ;lr), lookup() 把 IMPU 解成 contact, 沿 Path 送回 P-CSCF. Top: 模組 ims_auth, ims_registrar_scscf, ims_usrloc_scscf, cdp; 10.100.100.21:6060. Footer: 標準 S-CSCF 還會依 iFC 經 ISC 把請求交給 AS (TAS) 做補充服務, 本專案沒有 AS.",
+   "image_queries": []
+  }
+ ]
+}

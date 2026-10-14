@@ -1,0 +1,202 @@
+{
+  "engine": "GenOffice",
+  "source": "/home/jjd/free5gc/kamailio-free5gc/VoNR_over_IMS_kamailio_intro.pptx",
+  "sourceSHA256": "e6282a30d8ca9f06ed6aa63696cb29709389ed5eb8fa72e25da95cb18a2a0bf2",
+  "output": "/home/jjd/free5gc/kamailio-free5gc/VoNR_over_IMS_kamailio_intro_animated_v2.pptx",
+  "originalSlidesPreserved": 25,
+  "totalSlides": 28,
+  "animationSlides": [
+    {
+      "page": 8,
+      "clicks": 7,
+      "animations": 57,
+      "motionPaths": 7,
+      "stepDurationsMs": [
+        2920,
+        2920,
+        2920,
+        2920,
+        2920,
+        2920,
+        2920
+      ],
+      "moving": [
+        {
+          "step": 1,
+          "spid": "19",
+          "midpoint": [
+            223.147,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "spid": "24",
+          "midpoint": [
+            297.9395830656,
+            5.999976
+          ]
+        },
+        {
+          "step": 3,
+          "spid": "29",
+          "midpoint": [
+            151.0865322624,
+            5.999976
+          ]
+        },
+        {
+          "step": 4,
+          "spid": "33",
+          "midpoint": [
+            -334.72053859839997,
+            0
+          ]
+        },
+        {
+          "step": 5,
+          "spid": "37",
+          "midpoint": [
+            334.72053859839997,
+            0
+          ]
+        },
+        {
+          "step": 6,
+          "spid": "42",
+          "midpoint": [
+            151.0865322624,
+            5.999976
+          ]
+        },
+        {
+          "step": 7,
+          "spid": "46",
+          "midpoint": [
+            -334.72053859839997,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "page": 9,
+      "clicks": 6,
+      "animations": 48,
+      "motionPaths": 6,
+      "stepDurationsMs": [
+        2920,
+        3320,
+        2920,
+        2920,
+        2920,
+        2920
+      ],
+      "moving": [
+        {
+          "step": 1,
+          "spid": "22",
+          "midpoint": [
+            192.992,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "spid": "27",
+          "midpoint": [
+            551.9555830656002,
+            5.999976
+          ]
+        },
+        {
+          "step": 3,
+          "spid": "31",
+          "midpoint": [
+            289.488,
+            0
+          ]
+        },
+        {
+          "step": 4,
+          "spid": "35",
+          "midpoint": [
+            -482.47999999999996,
+            0
+          ]
+        },
+        {
+          "step": 5,
+          "spid": "39",
+          "midpoint": [
+            -482.47999999999996,
+            0
+          ]
+        },
+        {
+          "step": 6,
+          "spid": "43",
+          "midpoint": [
+            482.47999999999996,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "page": 10,
+      "clicks": 3,
+      "animations": 37,
+      "motionPaths": 4,
+      "stepDurationsMs": [
+        3020,
+        2920,
+        3520
+      ],
+      "moving": [
+        {
+          "step": 1,
+          "spid": "19",
+          "midpoint": [
+            124.45456800000014,
+            103.000032
+          ]
+        },
+        {
+          "step": 2,
+          "spid": "13",
+          "midpoint": [
+            576.5636,
+            0
+          ]
+        },
+        {
+          "step": 2,
+          "spid": "14",
+          "midpoint": [
+            -576.5636,
+            0
+          ]
+        },
+        {
+          "step": 3,
+          "spid": "25",
+          "midpoint": [
+            839.3086776831999,
+            -76.999968
+          ]
+        }
+      ]
+    }
+  ],
+  "checks": [
+    "native timing round-trip",
+    "click groups",
+    "hidden entrance",
+    "packet motion",
+    "packet exit",
+    "RTP removal on BYE",
+    "original slide XML preserved",
+    "source hash unchanged"
+  ]
+}

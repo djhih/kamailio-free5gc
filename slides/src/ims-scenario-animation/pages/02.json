@@ -1,0 +1,991 @@
+{
+  "title": "第二幕｜小明撥號，總機找到小華",
+  "type": "content",
+  "layout": "two_column_comparison",
+  "background": "#F6F7F9",
+  "elements": [
+    {
+      "type": "text",
+      "x": 60,
+      "y": 34,
+      "w": 1160,
+      "h": 60,
+      "paragraphs": [
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "第二幕｜小明撥號，總機找到小華",
+              "sizePt": 30,
+              "color": "#14213D",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "x": 60,
+      "y": 103,
+      "w": 1160,
+      "h": 33,
+      "paragraphs": [
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "雙方都已註冊。小明按下撥號鍵，SIP 請總機把電話送到小華。",
+              "sizePt": 15,
+              "color": "#5B6575",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "roundRect",
+      "x": 38,
+      "y": 164,
+      "w": 124,
+      "h": 76,
+      "fill": "#E8F1F9",
+      "stroke": {
+        "color": "#D5DAE1",
+        "widthPt": 1
+      },
+      "paragraphs": [
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "小明",
+              "sizePt": 17,
+              "color": "#2877B5",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "主叫 UE",
+              "sizePt": 12,
+              "color": "#5B6575",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "line",
+      "x": 100,
+      "y": 248,
+      "w": 1,
+      "h": 382,
+      "stroke": {
+        "color": "#D5DAE1",
+        "widthPt": 0.8
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "roundRect",
+      "x": 198,
+      "y": 164,
+      "w": 124,
+      "h": 76,
+      "fill": "#FFFFFF",
+      "stroke": {
+        "color": "#D5DAE1",
+        "widthPt": 1
+      },
+      "paragraphs": [
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "P-CSCF",
+              "sizePt": 17,
+              "color": "#E8742A",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "主叫側接待",
+              "sizePt": 12,
+              "color": "#5B6575",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "line",
+      "x": 260,
+      "y": 248,
+      "w": 1,
+      "h": 382,
+      "stroke": {
+        "color": "#D5DAE1",
+        "widthPt": 0.8
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "roundRect",
+      "x": 358,
+      "y": 164,
+      "w": 124,
+      "h": 76,
+      "fill": "#FFFFFF",
+      "stroke": {
+        "color": "#D5DAE1",
+        "widthPt": 1
+      },
+      "paragraphs": [
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "I-CSCF",
+              "sizePt": 17,
+              "color": "#E8742A",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "總機",
+              "sizePt": 12,
+              "color": "#5B6575",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "line",
+      "x": 420,
+      "y": 248,
+      "w": 1,
+      "h": 382,
+      "stroke": {
+        "color": "#D5DAE1",
+        "widthPt": 0.8
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "roundRect",
+      "x": 518,
+      "y": 164,
+      "w": 124,
+      "h": 76,
+      "fill": "#FFFFFF",
+      "stroke": {
+        "color": "#D5DAE1",
+        "widthPt": 1
+      },
+      "paragraphs": [
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "S-CSCF",
+              "sizePt": 17,
+              "color": "#E8742A",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "被叫承辦人",
+              "sizePt": 12,
+              "color": "#5B6575",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "line",
+      "x": 580,
+      "y": 248,
+      "w": 1,
+      "h": 382,
+      "stroke": {
+        "color": "#D5DAE1",
+        "widthPt": 0.8
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "roundRect",
+      "x": 678,
+      "y": 164,
+      "w": 124,
+      "h": 76,
+      "fill": "#FFFFFF",
+      "stroke": {
+        "color": "#D5DAE1",
+        "widthPt": 1
+      },
+      "paragraphs": [
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "P-CSCF",
+              "sizePt": 17,
+              "color": "#E8742A",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "被叫側接待",
+              "sizePt": 12,
+              "color": "#5B6575",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "line",
+      "x": 740,
+      "y": 248,
+      "w": 1,
+      "h": 382,
+      "stroke": {
+        "color": "#D5DAE1",
+        "widthPt": 0.8
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "roundRect",
+      "x": 838,
+      "y": 164,
+      "w": 124,
+      "h": 76,
+      "fill": "#E8F1F9",
+      "stroke": {
+        "color": "#D5DAE1",
+        "widthPt": 1
+      },
+      "paragraphs": [
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "小華",
+              "sizePt": 17,
+              "color": "#2877B5",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "被叫 UE",
+              "sizePt": 12,
+              "color": "#5B6575",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "line",
+      "x": 900,
+      "y": 248,
+      "w": 1,
+      "h": 382,
+      "stroke": {
+        "color": "#D5DAE1",
+        "widthPt": 0.8
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "roundRect",
+      "x": 1010,
+      "y": 164,
+      "w": 200,
+      "h": 76,
+      "fill": "#FCEBDD",
+      "stroke": {
+        "color": "#D5DAE1",
+        "widthPt": 1
+      },
+      "paragraphs": [
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "HSS",
+              "sizePt": 17,
+              "color": "#E8742A",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "center",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "知道承辦人在哪",
+              "sizePt": 12,
+              "color": "#5B6575",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "line",
+      "x": 1110,
+      "y": 248,
+      "w": 1,
+      "h": 118,
+      "stroke": {
+        "color": "#D5DAE1",
+        "widthPt": 0.8
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "lineArrow",
+      "x": 100,
+      "y": 300,
+      "w": 320,
+      "h": 1,
+      "flipH": false,
+      "stroke": {
+        "color": "#E8742A",
+        "widthPt": 1.6
+      }
+    },
+    {
+      "type": "text",
+      "x": 112,
+      "y": 272,
+      "w": 302,
+      "h": 25,
+      "paragraphs": [
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "INVITE + SDP offer",
+              "sizePt": 13,
+              "color": "#E8742A",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "x": 961,
+      "y": 272,
+      "w": 276,
+      "h": 46,
+      "paragraphs": [
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "① 小明：請幫我找小華。",
+              "sizePt": 12,
+              "color": "#14213D",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "SDP 說明我的媒體位址。",
+              "sizePt": 12,
+              "color": "#14213D",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "ellipse",
+      "x": 92,
+      "y": 292,
+      "w": 16,
+      "h": 16,
+      "fill": "#E8742A",
+      "stroke": {
+        "color": "#FFFFFF",
+        "widthPt": 1
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "lineArrow",
+      "x": 420,
+      "y": 360,
+      "w": 690,
+      "h": 1,
+      "flipH": false,
+      "stroke": {
+        "color": "#E8742A",
+        "widthPt": 1.6
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "lineArrow",
+      "x": 420,
+      "y": 366,
+      "w": 690,
+      "h": 1,
+      "flipH": true,
+      "stroke": {
+        "color": "#E8742A",
+        "widthPt": 1.6
+      }
+    },
+    {
+      "type": "text",
+      "x": 435,
+      "y": 332,
+      "w": 480,
+      "h": 25,
+      "paragraphs": [
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "LIR / LIA：小華在哪台 S-CSCF？",
+              "sizePt": 13,
+              "color": "#E8742A",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "x": 981,
+      "y": 244,
+      "w": 252,
+      "h": 25,
+      "paragraphs": [
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "② HSS：找這台 S-CSCF。",
+              "sizePt": 12,
+              "color": "#14213D",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "ellipse",
+      "x": 412,
+      "y": 352,
+      "w": 16,
+      "h": 16,
+      "fill": "#E8742A",
+      "stroke": {
+        "color": "#FFFFFF",
+        "widthPt": 1
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "lineArrow",
+      "x": 420,
+      "y": 420,
+      "w": 480,
+      "h": 1,
+      "flipH": false,
+      "stroke": {
+        "color": "#E8742A",
+        "widthPt": 1.6
+      }
+    },
+    {
+      "type": "text",
+      "x": 432,
+      "y": 392,
+      "w": 462,
+      "h": 25,
+      "paragraphs": [
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "INVITE → S-CSCF → Path",
+              "sizePt": 13,
+              "color": "#E8742A",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "x": 961,
+      "y": 392,
+      "w": 276,
+      "h": 46,
+      "paragraphs": [
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "③ 承辦人：我有她的地址。",
+              "sizePt": 12,
+              "color": "#14213D",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "沿 Path 經接待送到小華。",
+              "sizePt": 12,
+              "color": "#14213D",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "ellipse",
+      "x": 412,
+      "y": 412,
+      "w": 16,
+      "h": 16,
+      "fill": "#E8742A",
+      "stroke": {
+        "color": "#FFFFFF",
+        "widthPt": 1
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "lineArrow",
+      "x": 100,
+      "y": 480,
+      "w": 800,
+      "h": 1,
+      "flipH": true,
+      "stroke": {
+        "color": "#E8742A",
+        "widthPt": 1.6
+      }
+    },
+    {
+      "type": "text",
+      "x": 112,
+      "y": 452,
+      "w": 782,
+      "h": 25,
+      "paragraphs": [
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "180 Ringing",
+              "sizePt": 13,
+              "color": "#E8742A",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "x": 961,
+      "y": 452,
+      "w": 276,
+      "h": 46,
+      "paragraphs": [
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "④ 小華的手機開始響鈴。",
+              "sizePt": 12,
+              "color": "#14213D",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "小明得知對方正在響鈴。",
+              "sizePt": 12,
+              "color": "#14213D",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "ellipse",
+      "x": 892,
+      "y": 472,
+      "w": 16,
+      "h": 16,
+      "fill": "#E8742A",
+      "stroke": {
+        "color": "#FFFFFF",
+        "widthPt": 1
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "lineArrow",
+      "x": 100,
+      "y": 540,
+      "w": 800,
+      "h": 1,
+      "flipH": true,
+      "stroke": {
+        "color": "#E8742A",
+        "widthPt": 1.6
+      }
+    },
+    {
+      "type": "text",
+      "x": 112,
+      "y": 512,
+      "w": 782,
+      "h": 25,
+      "paragraphs": [
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "200 OK + SDP answer",
+              "sizePt": 13,
+              "color": "#E8742A",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "x": 961,
+      "y": 512,
+      "w": 276,
+      "h": 46,
+      "paragraphs": [
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "⑤ 小華：喂，我接聽了。",
+              "sizePt": 12,
+              "color": "#14213D",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "雙方媒體位址、codec 到齊。",
+              "sizePt": 12,
+              "color": "#14213D",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "ellipse",
+      "x": 892,
+      "y": 532,
+      "w": 16,
+      "h": 16,
+      "fill": "#E8742A",
+      "stroke": {
+        "color": "#FFFFFF",
+        "widthPt": 1
+      }
+    },
+    {
+      "type": "shape",
+      "shape": "lineArrow",
+      "x": 100,
+      "y": 600,
+      "w": 800,
+      "h": 1,
+      "flipH": false,
+      "stroke": {
+        "color": "#E8742A",
+        "widthPt": 1.6
+      }
+    },
+    {
+      "type": "text",
+      "x": 112,
+      "y": 572,
+      "w": 782,
+      "h": 25,
+      "paragraphs": [
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "ACK",
+              "sizePt": 13,
+              "color": "#E8742A",
+              "bold": true,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "x": 961,
+      "y": 572,
+      "w": 276,
+      "h": 46,
+      "paragraphs": [
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "⑥ 小明：收到，開始說話。",
+              "sizePt": 12,
+              "color": "#14213D",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "通話已建立。",
+              "sizePt": 12,
+              "color": "#14213D",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "shape",
+      "shape": "ellipse",
+      "x": 92,
+      "y": 592,
+      "w": 16,
+      "h": 16,
+      "fill": "#E8742A",
+      "stroke": {
+        "color": "#FFFFFF",
+        "widthPt": 1
+      }
+    },
+    {
+      "type": "text",
+      "x": 60,
+      "y": 657,
+      "w": 1160,
+      "h": 46,
+      "paragraphs": [
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "逐次點擊 6 次｜兩個 P 是本專案同一程序的兩個 leg。",
+              "sizePt": 11,
+              "color": "#5B6575",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        },
+        {
+          "align": "left",
+          "lineSpacingPct": 105,
+          "spaceAfterPt": 0,
+          "runs": [
+            {
+              "text": "本頁依 PoC 路由；標準主叫先經 Service-Route 到主叫 S-CSCF。",
+              "sizePt": 11,
+              "color": "#5B6575",
+              "bold": false,
+              "font": "Noto Sans CJK TC"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
