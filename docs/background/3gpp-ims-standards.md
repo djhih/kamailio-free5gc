@@ -73,8 +73,8 @@
 
 | 規格 | 介面 | 內容 | 本專案 |
 |---|---|---|---|
-| ✓ TS 29.228 | Cx／Dx | UAR／MAR／SAR／LIR 的流程、user profile 內容 | PyHSS ↔ I/S-CSCF |
-| ✓ TS 29.229 | Cx／Dx | Diameter 協定細節（AVP） | 同上 |
+| ✓ TS 29.228 | Cx／Dx | UAR／MAR／SAR／LIR 的流程、user profile 內容 | 現況：PyHSS ↔ I/S-CSCF；計畫 W8：UDM ↔ I/S-CSCF |
+| ✓ TS 29.229 | Cx／Dx | Diameter 協定細節（AVP） | 同上；W8 寫字典時查 |
 | TS 29.328／29.329 | Sh | AS 存取 HSS | 不需要 |
 | ✓ TS 29.214 | **Rx** | P-CSCF（AF）向 PCRF／PCF 要 QoS：AAR／STR／RAR／ASR | **必讀**（Kamailio `ims_qos`） |
 | TS 29.212 | Gx | 4G 的 PCRF ↔ PGW | 背景 |
@@ -85,9 +85,9 @@
 |---|---|---|---|
 | ✓ TS 29.514 | **N5** | Npcf_PolicyAuthorization：app session、媒體元件、事件 | **必讀** |
 | ✓ TS 29.513 | — | Policy 訊令流程；**7.3.2 PCF 與 Rx AF 互通**；**附錄 B：IMS 各情境要交換的資訊**（B.2 建立、B.3 修改、B.4 結束、B.5–B.8 註冊時） | **必讀** |
-| ✓ TS 29.562 | N70／N71 | HSS 給 IMS 的服務（Nhss_ImsUECM／SDM／UEAU） | 之後（HackMD 方案 B） |
+| ✓ TS 29.562 | N70／N71 | HSS 給 IMS 的服務（Nhss_ImsUECM／SDM／UEAU） | 不做（Kamailio 只支援 Cx） |
 | ✓ TS 29.510 | — | NRF：註冊、discovery、token | Adapter 註冊用 |
-| ✓ TS 29.505／29.519 | — | UDR 的用戶與 policy 資料 | 之後 |
+| ✓ TS 29.505／29.519 | — | UDR 的用戶與 policy 資料 | W8（Rel-17 沒有 IMS 用戶資料，要非標準擴充） |
 | ✓ TS 29.571 | — | SBI 共用資料型別 | 寫 Adapter 時查 |
 
 ### F. 安全

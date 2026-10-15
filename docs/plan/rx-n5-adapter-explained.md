@@ -18,7 +18,7 @@
 
 **現在的 AF shim 為什麼不夠：**
 - Kamailio 沒有用標準的 `ims_qos`，而是在設定檔裡手寫路由，把 SDP 用 base64 塞進自訂 JSON 送給 shim
-- 只有 IMS → 5GC 一個方向：PCF 說「PDU session 沒了」時，shim 只寫 log，通話還掛著
+- 只有 IMS → 5GC 一個方向：PCF 說「PDU session 沒了」的終止通知送到 `/notify/terminate`，shim 沒接這個路徑（回 404）；其他通知也只寫 log。結果通話還掛著
 - 呼叫是同步的，PCF 慢的時候會卡住 Kamailio
 
 Adapter 改成兩邊都用標準介面，而且雙向都通。
@@ -115,7 +115,7 @@ AA-Request
 }
 ```
 
-**之後的事 Adapter 不用管：** PCF 看到 AUDIO 就給 5QI 1，經 N7 通知 SMF，SMF 經 N4 在 UPF 裝上規則（Phase 2 完成後也會經 AMF 通知 gNB 與 UE）。
+**之後的事 Adapter 不用管：** PCF 看到 AUDIO 就給 5QI 1，經 N7 通知 SMF，SMF 經 N4 在 UPF 裝上規則（W5 完成後也會經 AMF 通知 gNB 與 UE）。
 
 **② 被叫那一段（UE2 的 PDU session）**：P-CSCF 對 UE2 也送一個 AAR，Session-Id 不同、Framed-IP 是 10.62.0.2。Adapter 照同樣步驟再建一個 app session。
 
@@ -131,6 +131,8 @@ AA-Request
 ### 4.3 通話中改 codec（re-INVITE）
 
 Kamailio 用**同一個 Session-Id** 再送 AAR。Adapter 查表發現已經存在，改用 `PATCH /app-sessions/{id}`，不是再建一個。
+
+> free5gc PCF 的 PATCH 有限制：同一通電話第二次以後改 flow，舊規則刪不掉。對策還沒決定，見 [rx-n5-adapter-design.md](rx-n5-adapter-design.md) §6.2 與 §10 第 5 項。
 
 ### 4.4 正常掛斷（BYE）
 
@@ -183,7 +185,7 @@ UE 註冊成功後，P-CSCF 可以用 `Rx_AAR_Register` 為 SIP 信令本身建�
 | # | 地方 | 為什麼 |
 |---|---|---|
 | 1 | **身分** | Kamailio 預設送 IMPU（SIP URI），不是 IMSI。Adapter 要從 IMPU 推 SUPI；推不出來時只能靠 UE IP，而 free5gc PCF 只靠 IP 找 session 時多 UE 可能綁錯 |
-| 2 | **Flow-Description 的方向** | Kamailio 的上行寫成 `permit in … from <UE> to <對方>`；現在可正常運作的 shim 是兩個方向都寫成 `from <對方> to <UE>`。free5gc PCF 只把 `permit in` 換成 `permit out`、地址不動，所以上行規則可能整個反過來。**Phase 0 要抓包確認 UPF 上的規則**，不對就由 Adapter 先把上行改寫成 shim 的格式 |
+| 2 | **Flow-Description 的方向** | Kamailio 的上行寫成 `permit in … from <UE> to <對方>`；現在可正常運作的 shim 是兩個方向都寫成 `from <對方> to <UE>`。free5gc PCF 只把 `permit in` 換成 `permit out`、地址不動，所以上行規則可能整個反過來。**W7（Phase 0）要抓包確認 UPF 上的規則**，不對就由 Adapter 先把上行改寫成 shim 的格式 |
 | 3 | **頻寬單位** | Rx 是 bps 整數；N5 是字串，例如 `"64000 bps"` |
 | 4 | **不認識的 AVP** | Kamailio 會帶一些 Adapter 不需要的 AVP（例如 ETSI 的優先權），不能因此拒絕請求 |
 | 5 | **回呼路徑** | PCF 會把終止通知送到 `notifUri` 後面加 `/terminate`。現在的 shim 只接 `/notify`，所以收不到 |
@@ -195,7 +197,7 @@ UE 註冊成功後，P-CSCF 可以用 `Rx_AAR_Register` 為 SIP 信令本身建�
 - 不看 SIP、不解析 SDP（`ims_qos` 已經把 SDP 變成 Flow-Description）
 - 不決定 QoS（5QI、頻寬上限由 PCF 決定）
 - 不碰 UPF、SMF、gNB
-- 不存用戶資料（那是 PyHSS 與 UDR 的事）
+- 不存用戶資料（那是 UDM／UDR 的事；W8 完成前 IMS 用戶資料在 PyHSS）
 
 ## 8. 名詞對照
 

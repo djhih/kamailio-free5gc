@@ -10,3 +10,8 @@ specs/3gpp-r17/*.xsd
 __pycache__/
 ~$*.pptx
 .~lock.*#
+
+# Lab handover material (thesis PDFs, slides, data): local reference only
+lab-ref/
+slides/
+specs/

@@ -5,7 +5,7 @@
 
 ## 總覽：五個對接點
 
-5GC 與 IMS 之間沒有任何 SIP 介面。兩邊的接觸只有下面五處：
+5GC 與 IMS 之間沒有任何 SIP 介面。兩邊的接觸只有下面五處：①③⑤ 是網路介面（N6、PCO、N5），②④ 是設定與開戶時的對齊。
 
 | # | 對接點 | 5GC 側 | IMS 側 | 主要設定 |
 |---|---|---|---|---|
@@ -62,7 +62,7 @@ SIP 信令一開始就走 5QI 5 的預設 QoS flow；語音的 5QI 1 由 ⑤ 在
 ```
 P-CSCF ──HTTP POST /call──▶ AF shim ──h2c POST /app-sessions──▶ PCF ──N7──▶ SMF ──PFCP──▶ UPF
 (200 OK 時，帶兩份 SDP)       (向 NRF 註冊為 AF)       (PCC rule、5QI 1)              (PDR + QER)
-BYE ──/call/delete──▶ AF shim ──DELETE app session──▶ PCF ──▶ SMF ──▶ UPF 移除規則
+BYE ──/call/delete──▶ AF shim ──POST {appSessionUri}/delete──▶ PCF ──▶ SMF ──▶ UPF 移除規則
 ```
 
 AF shim 送給 PCF 的 `AppSessionContext`：
@@ -97,7 +97,7 @@ AF shim 送給 PCF 的 `AppSessionContext`：
 | 缺口 | 影響 |
 |---|---|
 | SMF 收到 policy 更新後只改 UPF，沒經 AMF 送 N1N2 | gNB 與 UE 不知道語音的 QoS flow |
-| PCF 的通知在 shim 只寫 log | PDU session 斷了，通話還掛著 |
+| PCF 的終止通知送不到 shim | PCF 送到 `/notify/terminate`，shim 只接 `/notify`，回 404；其他通知也只寫 log。PDU session 斷了，通話還掛著 |
 | 註冊時沒有交換信令 flow、事件訂閱 | 與 TS 29.513 附錄 B.5–B.8 不符 |
 | AMF `imsVoPS: 0` | 網路告訴 UE 不支援 IMS 語音；SIPp 不理會所以能通 |
 | PCO 只支援 IPv4 P-CSCF | 無 IPv6 |

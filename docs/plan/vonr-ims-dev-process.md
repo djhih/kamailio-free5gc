@@ -1,6 +1,6 @@
 # VoNR NF 修改：開發流程與程式結構
 
-> 狀態：草案（2026-10-06），配合 `vonr-ims-nf-plan.md` 使用
+> 狀態：草案（2026-10-06；2026-10-15 補上 W8 HSS 併入 UDM），配合 `vonr-ims-nf-plan.md` 使用
 > 參考：iThome 系列文〈5G 核心網路與雲原生開發之亂彈阿翔〉（free5GC 維護者撰寫）中的
 > 〈Network Function 通用軟體架構〉、〈為 free5GC 導入 CI workflow〉、〈設計模式與重構〉，
 > 並對照本機 free5gc v4.3.0 的實際程式碼（`~/free5gc/free5gc`）
@@ -60,29 +60,11 @@
 
 ## 2. 本專案的程式結構
 
-照 1.2 的骨架。Rx（Diameter）放在系列文所說的「Protocol」那一層，相當於 AMF 的 NGAP：
+照 1.2 的骨架。Rx（Diameter）放在系列文所說的「Protocol」那一層（相當於 AMF 的 NGAP），Rx ↔ N5 的對應獨立成純函式的 `internal/mapper/`。
 
-```
-rx-n5-adapter/                      # 名稱待定（計畫第 7 節）
-├── cmd/main.go
-├── pkg/
-│   ├── app/app.go
-│   ├── factory/                    # 設定：Rx 的 Origin-Host／Realm、監聽位址、NRF、PCF／BSF 策略
-│   └── service/init.go             # context → consumer → processor → rx.Server → sbi.Server → metrics
-└── internal/
-    ├── context/                    # session 表：Rx Session-Id ↔ appSessionId ↔ {SUPI、UE IP、PCF URI}
-    ├── logger/
-    ├── util/
-    ├── rx/                         # Diameter 協定層：AAR／STR 收、RAR／ASR 送（go-diameter）
-    └── sbi/
-        ├── server.go               # PCF 回呼：notify、terminate
-        ├── api_callback.go
-        ├── processor/              # Rx ↔ N5 對應（純函式）與事件轉換
-        └── consumer/
-            ├── nrf_service.go      # 註冊、discovery、token
-            ├── pcf_service.go      # Npcf_PolicyAuthorization
-            └── bsf_service.go      # 以 UE IP 找 PCF（W3c）
-```
+完整的目錄與每個檔案的職責以 [rx-n5-adapter-design.md](rx-n5-adapter-design.md) 第 3 節為準，這裡不再重複，避免兩份不一致。
+
+W8 不是新 NF，而是在 free5gc UDM 裡加一個 HSS 子系統：Cx（Diameter）放在 `internal/cx/`，跟 Nudm 的 `internal/sbi/` 平行，作法照 CHF 的 `ccs_diameter/`。目錄以 [hss-in-udm-design.md](hss-in-udm-design.md) 第 4 節為準。
 
 SBI 的資料型別一律用 `github.com/free5gc/openapi/models`（`Pcf_PolAuth_*`）；N5 的 client 也已在 free5gc/openapi 裡。
 
@@ -99,7 +81,8 @@ SBI 的資料型別一律用 `github.com/free5gc/openapi/models`（`Pcf_PolAuth_
 
 ### 4.1 Repo 與分支
 
-- Adapter 一個 repo；SMF 的修改（計畫 W5）fork `free5gc/smf` 開分支，完成後發 PR 回上游；測試環境另開一個 repo（從 kamailio-free5gc 的 compose 與腳本改出來），角色類似 free5gc 的 `free5gc-compose` 與 `ci-test`
+- Adapter 一個 repo；SMF 的修改（計畫 W5）fork `free5gc/smf` 開分支，完成後發 PR 回上游；HSS 併入 UDM（計畫 W8）fork `free5gc/udm` 與 `free5gc/udr`，只留在自己的 fork；測試環境另開一個 repo（從 kamailio-free5gc 的 compose 與腳本改出來），角色類似 free5gc 的 `free5gc-compose` 與 `ci-test`
+- 三個 fork（SMF、UDM、UDR）要基於同一個 free5gc 版本（計畫第 7 節第 5 項）
 - `main` 永遠可以跑通端到端測試；每個功能開分支、發 PR、合併
 - commit 照 Conventional Commits，例如 `feat(rx): handle STR`、`fix(processor): map Flow-Description direction`
 
@@ -114,9 +97,9 @@ SBI 的資料型別一律用 `github.com/free5gc/openapi/models`（`Pcf_PolAuth_
 
 | 層級 | 怎麼跑 | 對應 free5gc 的作法 |
 |---|---|---|
-| 單元 | `go test ./...`；Rx → N5 對應、事件對應都用表格驅動 | 各 NF repo 的 `go.yml` |
-| 整合 | 小的 Rx client（go-diameter）直接打 NF，加上真的 free5gc PCF／SMF／UPF | 主 repo 的 `test_ci.sh`、`ci-test` 的 IT compose |
-| 端到端 | Kamailio + PyHSS + free5gc，抓包版的 `03-call-test.sh`、`05-n5-qos-test.sh` | `ci-test` 的 e2e compose |
+| 單元 | `go test ./...`；Rx → N5 對應、事件對應、Cx 指令解碼都用表格驅動 | 各 NF repo 的 `go.yml` |
+| 整合 | 小的 Rx client、Cx client（go-diameter）直接打 Adapter 與 UDM，加上真的 free5gc PCF／SMF／UPF／UDR | 主 repo 的 `test_ci.sh`、`ci-test` 的 IT compose |
+| 端到端 | Kamailio + free5gc（W8 完成前是 Kamailio + PyHSS + free5gc），抓包版的 `03-call-test.sh`、`05-n5-qos-test.sh` | `ci-test` 的 e2e compose |
 
 ### 4.4 CI
 
@@ -131,4 +114,5 @@ SBI 的資料型別一律用 `github.com/free5gc/openapi/models`（`Pcf_PolAuth_
 | IMS 與 PCF 要交換什麼 | TS 29.513 7.3.2、附錄 B |
 | 兩端介面 | TS 29.214（Rx）、TS 29.514（N5）、TS 29.571（共用型別） |
 | NRF、BSF | TS 29.510 |
+| HSS 併入 UDM（W8） | TS 23.228 附錄 Y.0（部署方式）、TS 29.228／29.229（Cx）、TS 33.203（IMS AKA）、TS 23.003 §13（IMS 身分）、TS 29.505（UDR） |
 | 背景 | TS 23.228、TS 24.229（IMS 怎麼用這些資訊）、TS 23.501（5QI） |

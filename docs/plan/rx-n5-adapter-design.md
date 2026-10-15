@@ -59,6 +59,8 @@ Kamailio P-CSCF                    Adapter                          free5gc PCF
 
 ### 2.2 Kamailio `ims_qos` 實際送出的內容（看過原始碼）
 
+> 讀的是 GitHub 上 Kamailio **master** 分支；部署用 **6.1.4**，要在 W7 用 6.1.4 抓包確認。
+
 | 項目 | 實際行為 | 對 Adapter 的影響 |
 |---|---|---|
 | Subscription-Id | 預設型別是 **SIP URI（IMPU）**，原始碼註解「we only do IMPU now」 | 要從 IMPU 推出 SUPI（見 4.2） |
@@ -115,7 +117,7 @@ rx-n5-adapter/
     │   └── consumer/
     │       ├── nrf_service.go      # 註冊為 AF、取 token
     │       ├── pcf_service.go      # PolAuth client
-    │       └── bsf_service.go      # Phase 4：以 UE IP 找 PCF
+    │       └── bsf_service.go      # W3c：以 UE IP 找 PCF
     ├── logger/
     └── util/
 ```
@@ -208,6 +210,8 @@ type SessionStore interface {
 | INDICATION_OF_LOSS_OF_BEARER(2)／RECOVERY_OF_BEARER(3) | 沒有直接對應；候選 QOS_NOTIF | **待確認**（TS 29.513） |
 | INDICATION_OF_RELEASE_OF_BEARER(4) | 沒有對應；由 `terminate` 處理 | 待確認 |
 
+「確定度」只指名稱對應。free5gc PCF 實際只處理其中幾種事件，見第 10 節第 6 項。
+
 ### 5.4 N5 回應 → AAA Result-Code
 
 | N5 | AAA |
@@ -224,7 +228,7 @@ type SessionStore interface {
 
 1. 解碼 AAR；缺 Framed-IP-Address → AAA 5061
 2. 判斷類型：媒體元件的 Flow-Usage 是 AF_SIGNALLING，或 Media-Type 是 CONTROL → `Signalling`，否則 `Media`
-3. 推 SUPI（4.2）；決定 PCF（Phase 1 用設定值，Phase 4 改用 BSF）
+3. 推 SUPI（4.2）；決定 PCF（W3a 用設定值，W3c 改用 BSF）
 4. `mapper.ToAppSessionContext(aar)`
 5. `PostAppSessions`（帶 NRF token，OAuth 關閉時不帶）
 6. 成功：存 session（State=Active），回 AAA 2001；失敗：依 5.4 回 AAA，不存
@@ -233,6 +237,12 @@ type SessionStore interface {
 
 1. 找到 session → `mapper.ToAppSessionContextUpdate(aar)` → `ModAppSession`
 2. 依結果回 AAA
+
+> **free5gc PCF 的 PATCH 有兩個限制**（讀 PCF v1.4.5 原始碼，`policyauthorization.go` 的 `HandleModAppSessionContext`／`removeMediaComp`；細節見 [../background/ims-af-thesis-comparison.md](../background/ims-af-thesis-comparison.md) 2.2）：
+> 1. PCF 只到**當初 POST 的** `medComponents` 裡找要替換的舊規則。第一次 PATCH 正常，但同一個元件第二次 PATCH 時找不到舊規則；如果 flow 變了（例如 port 改了），舊的 PCC rule 不會被刪，之後連 Delete 也刪不到
+> 2. PATCH 沒帶 `evSubsc` 時，PCF 會清掉既有的事件訂閱。所以 `ToAppSessionContextUpdate` **每次都要帶上 session 裡存的 `Events`**
+>
+> 第 1 點的對策還沒決定（第 10 節第 5 項）。
 
 ### 6.3 STR
 
@@ -271,7 +281,7 @@ configuration:
     port: 8000
   nrfUri: http://nrf.free5gc.org:8000
   pcf:
-    uri: http://pcf:8000           # Phase 4 改由 BSF 決定
+    uri: http://pcf:8000           # W3c 改由 BSF 決定
   defaults:
     dnn: ims
     afAppId: IMS-voice
@@ -279,6 +289,19 @@ configuration:
 logger:
   level: info
 ```
+
+### 7.1 部署
+
+Adapter 和現在的 AF shim 一樣要**同時接兩個網段**：
+
+| 網段 | 用途 | 對象 |
+|---|---|---|
+| dnnet（10.100.100.0/24） | Rx：Kamailio P-CSCF 連進來（TCP 3868） | P-CSCF |
+| corenet（10.100.200.0/24） | SBI：呼叫 PCF、NRF；接收 PCF 回呼 | PCF、NRF |
+
+- `rx.bindAddr` 綁 dnnet 的位址；`sbi.registerIPv4` 用 corenet 的位址（上面的 10.100.200.50 是示意值，實際依 compose 指定）
+- `notifUri` 要用 PCF 連得到的 corenet 位址
+- HSS 的 Cx 也在 dnnet 用 3868（W8 完成前是 PyHSS，之後是 UDM），但 IP 不同，不衝突
 
 ## 8. Kamailio 端要改的設定
 
@@ -289,9 +312,9 @@ logger:
 3. `modparam("ims_qos", "rx_dest_realm", "ims.mnc093.mcc208.3gppnetwork.org")`、`af_signaling_ip` 設為 P-CSCF 的 IP
 4. INVITE 的 onreply route：200 OK 時依方向呼叫 `Rx_AAR("<resume route>", "orig")` 或 `"term"`，取代 `route(AF_RESERVE)`
 5. 刪掉 `AF_READ_OFFER`、`AF_RESERVE`、`AF_RELEASE`、`AF_KEY`（STR 由 ims_qos 在 BYE 時自己送）
-6. Phase 4：註冊時呼叫 `Rx_AAR_Register`（官方文件標示只能在 request route 用）
+6. W3c：註冊時呼叫 `Rx_AAR_Register`（官方文件標示只能在 request route 用）
 
-確切語法以 Kamailio 6.1 的 `ims_qos` 與 `cdp` 文件為準；Phase 0 先用假的 Diameter peer 抓包確認。
+確切語法以 Kamailio 6.1 的 `ims_qos` 與 `cdp` 文件為準；W7 先用假的 Diameter peer 抓包確認。
 
 ## 9. 實作順序
 
@@ -306,14 +329,17 @@ logger:
 | 5 | `consumer/nrf_service.go`：註冊為 AF、取 token | NRF 查得到這個 AF |
 | 6 | `consumer/pcf_service.go` + 6.1：真的建 app session | `05-n5-qos-test.sh` 改成用 Rx client 觸發，UPF 上出現 PDR／QER |
 | 7 | 6.3 STR | 規則消失 |
-| 8 | Kamailio 改設定（第 8 節），拿掉 AF shim | `03-call-test.sh` 通過（**Phase 1 完成**） |
-| 9 | 回呼 server + 6.4 terminate → ASR | 通話中釋放被叫 PDU session，通話結束（**Phase 3**） |
+| 8 | Kamailio 改設定（第 8 節），拿掉 AF shim | `03-call-test.sh` 通過（**W3a 完成，Phase 1**） |
+| 9 | 回呼 server + 6.4 terminate → ASR | 通話中釋放被叫 PDU session，通話結束（**W3b，Phase 3**） |
 | 10 | 6.5 事件 → RAR、6.2 PATCH | 抓包看到 RAR；re-INVITE 後 app session 更新 |
-| 11 | 信令 session、BSF（Phase 4） | 註冊時抓包看到 AAR 與對應的 app session |
+| 11 | 信令 session、BSF（W3c，Phase 4） | 註冊時抓包看到 AAR 與對應的 app session |
 
-## 10. 待確認（Phase 0）
+## 10. 待確認（W7，Phase 0）
 
 1. go-diameter 遇到字典沒有的 AVP（例如 ETSI Reservation-Priority）會不會解碼失敗；必要時把它們加進字典
 2. **Flow-Description 的上行寫法。** `ims_qos` 的上行是 `permit in … from <UE> to <對方>`（原始碼 `rx_avp.c`）；現有 shim 兩個方向都寫 `from <對方> to <UE>`，而且測試通過。free5gc PCF 的 `flowDescFromN5toN7` 只把 `permit in` 換成 `permit out`、地址不動。要抓包看 UPF 上的上行 PDR 是否正確；不正確就在 mapper 裡把上行規則的來源與目的對調
 3. 5.3 中標「待確認」的事件對應，查 TS 29.513
 4. Kamailio cdp 連 Adapter 時是否要求 TLS 或特定的 CER 內容
+5. **re-INVITE 的作法**（受 §6.2 第 1 點限制）：(a) 照樣 PATCH，接受第二次以後換 flow 時會留下舊規則；(b) 改成 Delete 舊的 app session 再 POST 一個新的，代價是 PCF 端短暫沒有語音規則；(c) 修 PCF，違反「PCF 不動」的原則。待決定
+6. **PCF 會處理哪些事件**：free5gc PCF 只把 ACCESS_TYPE_CHANGE、PLMN_CHG、QOS_NOTIF、SUCCESSFUL_RESOURCES_ALLOCATION、USAGE_REPORT 轉成 SMF 的觸發條件，其餘事件只記一行 `AF Event is unknown` 就略過。5.3 表中「確定度：高」指的是**名稱對應**，不代表 PCF 真的會通知
+7. **W3c 的信令 session 拿不到 5QI 5**：free5gc PCF 把 Media-Type CONTROL 對應到 5QI 9（`internal/util/pcc_rule.go`）。本專案的 5QI 5 由 `ims` DNN 的預設 QoS 提供，所以 W3c 的價值在事件訂閱，不在 QoS

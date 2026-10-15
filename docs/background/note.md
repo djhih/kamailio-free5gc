@@ -8,6 +8,8 @@ A useful reference for understanding how 5G NR, 5GC, SIP, and IMS work together 
 
 # 背景知識筆記
 
+> 本文寫於 2026-09-21，描述的是現有 PoC（含 AF shim）；改善計畫見 `docs/plan/`。
+
 > 對照專案：`kamailio-free5gc/`（free5gc 4.2.3 + Kamailio 6.1.4 + PyHSS 2.0.0）
 > 延伸閱讀：`kamailio-free5gc/docs/architecture.md`、`call-flows.md`、`identities.md`、`policy-and-qos.md`
 
@@ -49,14 +51,16 @@ A useful reference for understanding how 5G NR, 5GC, SIP, and IMS work together 
   | 身分       | SUPI（`imsi-208930000000001`） | IMPI（私有身分，類似帳號）/ IMPU（公開身分，`sip:...@ims.mnc093.mcc208.3gppnetwork.org`，類似電話號碼） |
   | 認證       | 5G-AKA                           | IMS AKA                                                                                                   |
 
-  所以一支手機要打電話，得**先過 5G 認證拿到網路，再過 IMS 認證拿到通話服務**。HSS 和 UDR 之間沒有介面，只靠「開戶時從同一個 IMSI 推導出兩邊的身分」來保持一致（詳見 `docs/identities.md`）。
-- 兩邊只有三個接點：
+  所以一支手機要打電話，得**先過 5G 認證拿到網路，再過 IMS 認證拿到通話服務**。目前 HSS 和 UDR 之間沒有介面，只靠「開戶時從同一個 IMSI 推導出兩邊的身分」來保持一致（詳見 `kamailio-free5gc/docs/identities.md`）。計畫 W8 會把 HSS 併入 UDM，兩邊改用同一份資料。
+- 兩邊共有五個對接點（完整說明見 `docs/current/free5gc-kamailio-integration.md`）。其中三個是網路介面：
 
   | 接點          | 用途                                                 |
   | ------------- | ---------------------------------------------------- |
   | **N6**  | SIP 和 RTP 都走 PDU session，從 UPF 出去到達 IMS     |
   | **PCO** | 建立 PDU session 時，SMF 告訴 UE「你的 P-CSCF 在哪」 |
   | **N5**  | P-CSCF 以 AF 的身分向 PCF 要求 QoS                   |
+
+  另外兩個是設定與開戶時的對齊：`ims` DNN 與預設 QoS（5QI 5），以及兩邊的用戶身分與金鑰從同一個 IMSI 推導。
 
 ## 2. SIP 是什麼？
 
@@ -299,7 +303,7 @@ sequenceDiagram
 | 實體                                                                    | 角色                                                                                                                   | 本專案有嗎                       |
 | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
 | P-CSCF / I-CSCF / S-CSCF                                                | SIP 信令的三段 proxy（見第 4 節）                                                                                      | ✅ 三個 Kamailio                 |
-| HSS                                                                     | IMS 用戶資料：身分、profile、認證金鑰、目前註冊在哪                                                                    | ✅ PyHSS（和 UDR**分開**） |
+| HSS                                                                     | IMS 用戶資料：身分、profile、認證金鑰、目前註冊在哪                                                                    | ✅ PyHSS（和 UDR**分開**；計畫 W8 併入 UDM） |
 | **TAS**（Telephony Application Server，也叫 MMTel AS）            | 補充服務：來電轉接、話中插接、保留、來電顯示等。S-CSCF 依照 user profile 裡的 iFC，透過**ISC** 介面把 SIP 轉給它 | ❌                               |
 | **MRFC / MRFP**（Media Resource Function Controller / Processor） | 媒體資源：多方會議混音、語音提示（「您撥的號碼是空號」）、撥號音。MRFC 管控制，MRFP 實際處理媒體                       | ❌                               |
 
@@ -346,7 +350,7 @@ sequenceDiagram
 | **My**：MRFC ↔ MRFP                                  | 應該是**Mp**（H.248），沒有 My 這個介面                                                                                                                                                                                  |
 | **Mr**：TAS ↔ MRFC                                   | S-CSCF ↔ MRFC 才是 Mr；AS ↔ MRFC 是**Mr'**                                                                                                                                                                             |
 | **Cx**：S-CSCF ↔ HSS/UDR                             | **I-CSCF 和 S-CSCF** 都會走 Cx 到 HSS（I-CSCF 用 UAR/LIR）                                                                                                                                                               |
-| **HSS/UDR** 畫成同一顆資料庫                          | 標準上可以把 HSS 和 UDM 合設（HSS+UDM），但兩者仍是不同的功能。本專案刻意讓 PyHSS 和 UDR 完全分開，兩者之間沒有任何介面                                                                                                        |
+| **HSS/UDR** 畫成同一顆資料庫                          | 標準上可以把 HSS 和 UDM 合設（HSS+UDM），但兩者仍是不同的功能。本專案目前讓 PyHSS 和 UDR 完全分開，兩者之間沒有任何介面；計畫 W8 會把 HSS 併入 UDM（見 `docs/plan/hss-in-udm-design.md`）                                                                                                        |
 | **缺少 N5（或 Rx）**                                  | 這是 IMS 和 5GC 之間**最關鍵的一條線**：P-CSCF（以 AF 身分）↔ PCF，用來要求語音 QoS。圖上完全沒畫，只在 Key Points 提到「PCF + UPF 執行 QoS」                                                                           |
 | **缺少 N6**                                           | 圖上的 SIP 和 RTP 長線從 gNB 直接連到 IMS 和 MGW，**看起來像繞過了 UPF**。實際上 SIP 和 RTP 對 5GC 而言都只是使用者面的封包，**一定要走 N3 → UPF → N6** 才能到 IMS。本專案用兩個互不相通的網段，確保一定經過 UPF |
 | QoS「由 PCF + UPF 執行」                                    | PCF 只負責**決策**；執行的是 UPF（封包分類、QER），以及 gNB（無線資源排程，GBR 真正的保證在這裡）。另外，free5gc 的 UPF 雖然會裝上 QER，但實際上不會限速                                                                 |
@@ -373,4 +377,4 @@ graph LR
     SCSCF -- "Cx" --> HSS
 ```
 
-圖中的 **TAS、MRFC/MRFP、BGCF/MGCF/MGW** 本專案都沒有。專案範圍只到「兩個 IMS 用戶互打，並驗證 5GC ↔ IMS 的三個接點（N6、PCO、N5）」。若之後要擴充，順序大概會是：加 TAS 做補充服務 → 加 MRF 做會議或語音提示 → 加 PSTN 閘道。
+圖中的 **TAS、MRFC/MRFP、BGCF/MGCF/MGW** 本專案都沒有。專案範圍只到「兩個 IMS 用戶互打，並驗證 5GC ↔ IMS 的五個對接點（網路介面 N6、PCO、N5，加上 `ims` DNN 與用戶身分的對齊）」。若之後要擴充，順序大概會是：加 TAS 做補充服務 → 加 MRF 做會議或語音提示 → 加 PSTN 閘道。
