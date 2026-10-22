@@ -1,6 +1,6 @@
 # VoNR NF 修改：開發流程與程式結構
 
-> 狀態：草案（2026-10-06；2026-10-15 補上 W8 HSS 併入 UDM），配合 `vonr-ims-nf-plan.md` 使用
+> 狀態：草案（2026-10-06；2026-10-15 補上 W8；2026-10-22 對齊各規格組），配合 [vonr-ims-nf-plan.md](vonr-ims-nf-plan.md) 使用
 > 參考：iThome 系列文〈5G 核心網路與雲原生開發之亂彈阿翔〉（free5GC 維護者撰寫）中的
 > 〈Network Function 通用軟體架構〉、〈為 free5GC 導入 CI workflow〉、〈設計模式與重構〉，
 > 並對照本機 free5gc v4.3.0 的實際程式碼（`~/free5gc/free5gc`）
@@ -62,9 +62,11 @@
 
 照 1.2 的骨架。Rx（Diameter）放在系列文所說的「Protocol」那一層（相當於 AMF 的 NGAP），Rx ↔ N5 的對應獨立成純函式的 `internal/mapper/`。
 
-完整的目錄與每個檔案的職責以 [rx-n5-adapter-design.md](rx-n5-adapter-design.md) 第 3 節為準，這裡不再重複，避免兩份不一致。
+完整的目錄與每個檔案的職責以 [../rx-n5/design.md](../rx-n5/design.md) §5.5為準，這裡不再重複，避免兩份不一致。
 
-W8 不是新 NF，而是在 free5gc UDM 裡加一個 HSS 子系統：Cx（Diameter）放在 `internal/cx/`，跟 Nudm 的 `internal/sbi/` 平行，作法照 CHF 的 `ccs_diameter/`。目錄以 [hss-in-udm-design.md](hss-in-udm-design.md) 第 4 節為準。
+W5 是在 free5gc SMF 的 fork 裡加網路發起修改的程序狀態機（`internal/sbi/processor/nwmod.go`）與差異計算（`internal/context/qos_flow_diff.go`），目錄以 [../smf-n1n2/design.md](../smf-n1n2/design.md) §5.5 為準。
+
+W8 不是新 NF，而是在 free5gc UDM 裡加一個 HSS 子系統：Cx（Diameter）放在 `internal/cx/`，跟 Nudm 的 `internal/sbi/` 平行，作法照 CHF 的 `ccs_diameter/`。目錄以 [../hss-udm/design.md](../hss-udm/design.md) §5.5 為準。注意 CHF 用的是 `github.com/fiorix/go-diameter v3.0.2+incompatible`，內建字典沒有 Cx（版本選擇見該文件 D13）。
 
 SBI 的資料型別一律用 `github.com/free5gc/openapi/models`（`Pcf_PolAuth_*`）；N5 的 client 也已在 free5gc/openapi 裡。
 
@@ -81,8 +83,8 @@ SBI 的資料型別一律用 `github.com/free5gc/openapi/models`（`Pcf_PolAuth_
 
 ### 4.1 Repo 與分支
 
-- Adapter 一個 repo；SMF 的修改（計畫 W5）fork `free5gc/smf` 開分支，完成後發 PR 回上游；HSS 併入 UDM（計畫 W8）fork `free5gc/udm` 與 `free5gc/udr`，只留在自己的 fork；測試環境另開一個 repo（從 kamailio-free5gc 的 compose 與腳本改出來），角色類似 free5gc 的 `free5gc-compose` 與 `ci-test`
-- 三個 fork（SMF、UDM、UDR）要基於同一個 free5gc 版本（計畫第 7 節第 5 項）
+- Adapter 一個 repo；SMF 的修改（W5）fork `free5gc/smf`，是否發 PR 回上游待決定（smf-n1n2 D09）；HSS 併入 UDM（W8）fork `free5gc/udm` 與 `free5gc/udr`，只留在自己的 fork；free-ran-ue 的修改（W6）照 `ran/pcscf-discovery.patch` 做成 patch；測試工具（W1）放在 `kamailio-free5gc/scripts/e2e/`
+- 三個 fork（SMF、UDM、UDR）要基於同一個 free5gc 版本（計畫第 7 節第 3 項、W7-C）
 - `main` 永遠可以跑通端到端測試；每個功能開分支、發 PR、合併
 - commit 照 Conventional Commits，例如 `feat(rx): handle STR`、`fix(processor): map Flow-Description direction`
 
@@ -99,7 +101,7 @@ SBI 的資料型別一律用 `github.com/free5gc/openapi/models`（`Pcf_PolAuth_
 |---|---|---|
 | 單元 | `go test ./...`；Rx → N5 對應、事件對應、Cx 指令解碼都用表格驅動 | 各 NF repo 的 `go.yml` |
 | 整合 | 小的 Rx client、Cx client（go-diameter）直接打 Adapter 與 UDM，加上真的 free5gc PCF／SMF／UPF／UDR | 主 repo 的 `test_ci.sh`、`ci-test` 的 IT compose |
-| 端到端 | Kamailio + free5gc（W8 完成前是 Kamailio + PyHSS + free5gc），抓包版的 `03-call-test.sh`、`05-n5-qos-test.sh` | `ci-test` 的 e2e compose |
+| 端到端 | Kamailio + free5gc（W8 完成前是 Kamailio + PyHSS + free5gc），用抓包版測試工具（[../e2e-harness/](../e2e-harness/README.md)）判定 | `ci-test` 的 e2e compose |
 
 ### 4.4 CI
 
@@ -113,6 +115,9 @@ SBI 的資料型別一律用 `github.com/free5gc/openapi/models`（`Pcf_PolAuth_
 | 為什麼是 Rx 前端 | TS 23.503 附錄 C |
 | IMS 與 PCF 要交換什麼 | TS 29.513 7.3.2、附錄 B |
 | 兩端介面 | TS 29.214（Rx）、TS 29.514（N5）、TS 29.571（共用型別） |
-| NRF、BSF | TS 29.510 |
+| NRF | TS 29.510 |
+| BSF（W3c） | TS 29.521（本機沒有；目前依 free5gc BSF 實作） |
+| 5GC 回報（W3b） | TS 29.214 §4.4.6、TS 29.514 §4.2.5 |
+| SMF 通知 RAN／UE（W5） | TS 23.502 §4.3.3.2、TS 24.501 §6.3.2、§9.11.4.12、§9.11.4.13；TS 38.413、29.502、29.518、29.512（本機沒有） |
 | HSS 併入 UDM（W8） | TS 23.228 附錄 Y.0（部署方式）、TS 29.228／29.229（Cx）、TS 33.203（IMS AKA）、TS 23.003 §13（IMS 身分）、TS 29.505（UDR） |
 | 背景 | TS 23.228、TS 24.229（IMS 怎麼用這些資訊）、TS 23.501（5QI） |

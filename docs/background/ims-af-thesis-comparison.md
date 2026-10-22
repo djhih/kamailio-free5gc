@@ -1,7 +1,7 @@
 # 碩論 IMS-AF 與本專案架構比較
 
 > 狀態：分析完成；「app session 模型不採用碩論做法」是**建議，尚待決定**（2026-10-15）
-> 對象：實驗室 2024 年碩論〈VoNR QoE Measurement and Prediction in 5G Mobile Networks〉第 3.1 節的 IMS-AF，對照本專案的現況（[../current/free5gc-kamailio-integration.md](../current/free5gc-kamailio-integration.md)）與計畫（[../plan/rx-n5-adapter-design.md](../plan/rx-n5-adapter-design.md)、[../plan/vonr-ims-nf-plan.md](../plan/vonr-ims-nf-plan.md)）
+> 對象：實驗室 2024 年碩論〈VoNR QoE Measurement and Prediction in 5G Mobile Networks〉第 3.1 節的 IMS-AF，對照本專案的現況（[../overview/free5gc-kamailio-integration.md](../overview/free5gc-kamailio-integration.md)）與計畫（[../rx-n5/design.md](../rx-n5/design.md)、[../overview/vonr-ims-nf-plan.md](../overview/vonr-ims-nf-plan.md)）
 > 碩論資料放在本機的 `lab-ref/`，**不進 git**（見 `.gitignore`），原始來源是實驗室 NAS
 
 ## 先看這裡

@@ -108,7 +108,7 @@ def diagram():
     node("hss", 1046, 368, 162, "HSS", "(PyHSS)", color="orange", h=62)
 
     box("custom-af-adapter", 705, 204, 318, 89, "white", "custom", dashed=True)
-    text("af-title", 717, 214, 296, 28, "IMS-to-5GC AF Adapter", 21, "ink", True, "center")
+    text("af-title", 717, 214, 296, 28, "AF shim（現況）", 21, "ink", True, "center")
     text("af-role", 717, 244, 296, 22, "Custom · 承接 IMS AF 功能", 16, "muted", align="center")
     text("af-custom-label", 717, 267, 296, 21, "Implementation-specific / Non-3GPP", 14.5,
          "custom", align="center")

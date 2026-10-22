@@ -48,8 +48,8 @@ Python 腳本需要 `lxml`；渲染／版面檢查使用本機 GenOffice。
   明註實際封包由藍色 IP 路徑承載；Mw/SIP 接續到 I-CSCF、S-CSCF。
 - **灰線**：I-CSCF、S-CSCF 各有 Cx/Diameter 連到同一個 HSS。
 - **深色線**：AF → N5 → PCF → N7 → SMF → N4/PFCP → UPF。
-- **棕色虛線與虛線框**：P-CSCF → Custom HTTP API → IMS-to-5GC AF Adapter，
-  Adapter 明註 Custom、Implementation-specific、Non-3GPP。
+- **棕色虛線與虛線框**：P-CSCF → Custom HTTP API → AF shim（現況）框，
+  框內註明 Custom、Implementation-specific、Non-3GPP；「Adapter」一詞保留給計畫中的 Rx／N5 Adapter。
 
 箭頭表示請求／政策下發方向，省略回應；不是宣稱介面只能單向通訊。
 RTP 在本 PoC 的 UPF hairpin，不經 CSCF，沒有把語音媒體畫到 SIP proxy。
@@ -90,7 +90,7 @@ UPF 的 forwarding／QoS enforcement 是標準角色，本圖的 PoC 註記只�
 |---|---|---|
 | 三個 CSCF 是否用 Kamailio | `kamailio-free5gc/{pcscf,icscf,scscf}/Dockerfile`、各自 `kamailio.cfg`，以及 `docker-compose.yaml` 的 build 設定 | 分別標示 P/I/S-CSCF (Kamailio) |
 | HSS 是否用 PyHSS | compose 的 `pyhss-hss`、`pyhss-api`、`pyhss-diameter` 與 `hss/pyhss.env` | HSS (PyHSS) |
-| Adapter 在哪裡 | `kamailio-free5gc/af/main.go`、`af/Dockerfile`，compose 的 `af` service | 自訂 IMS-to-5GC AF Adapter |
+| Adapter 在哪裡 | `kamailio-free5gc/af/main.go`、`af/Dockerfile`，compose 的 `af` service | AF shim（現況） |
 | P-CSCF ↔ Adapter | `pcscf/kamailio.cfg` 的 `AF_URL`、`AF_RESERVE`、`AF_RELEASE` | Custom HTTP API；HTTP/1.1 JSON，POST `/call` 與 POST `/call/delete` |
 | Adapter ↔ PCF | `af/main.go` 的 `http2.Transport`、`handleCall`、`handleCallDelete` | N5 / Npcf_PolicyAuthorization / HTTP/2 SBI (h2c) |
 | 真的使用該 N5 service 嗎 | `af/main.go` 呼叫 `/npcf-policyauthorization/v1/app-sessions`；`config/pcfcfg.yaml` 宣告 `npcf-policyauthorization` | 已確認，不是僅依文件推定 |
@@ -106,13 +106,13 @@ PCF notification 使用 Adapter 的 `/notify`。API 路徑與程式模組名保�
    沒有暗示現有部署使用實體 NR 無線電。
 2. 原圖 N6 視覺上接到 P-CSCF；實際是 UPF 接 `dnnet` 的 DN，P-CSCF 位於 DN 內。
 3. `http_client` 是 Kamailio 模組名，真正的整合介面是自訂 HTTP API。
-4. 專案目前尚未使用計畫中的 Rx／N5 Adapter。`ims-af-plan.md` 與 `vonr-ims-nf-plan.md`
+4. 專案目前尚未使用計畫中的 Rx／N5 Adapter。`docs/plan/vonr-ims-nf-plan.md`
    描述未來改造；本次沒有把規劃中的 Rx 畫成已存在的介面。
 5. P→I→S 是目前 cfg 的 PoC 路由，不能視為所有 IMS 部署的通用主叫 INVITE 路徑；
    標準主叫通常依註冊所得 Service-Route 到 serving S-CSCF。本頁直接標示 PoC 路由範圍。
 6. Repository 明示 QoS 測試只確認 PDR／QER 規則存在；端到端 GBR／限速並未驗證。
    整合說明也記錄 SMF policy update 後尚缺 gNB／UE 的 N1N2 更新，因此圖中不宣稱完整 VoNR QoS 已完成。
-7. 部分既有文件把釋放操作簡寫為「DELETE app session」，但 `af/main.go` 實際是 POST `/delete`。
+7. 釋放操作是 POST `{appSessionUri}/delete`（不是 HTTP DELETE）；`docs/current/free5gc-kamailio-integration.md` 已改用這個寫法。
 
 ## G. 驗證與未確定事項
 

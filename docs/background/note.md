@@ -8,7 +8,7 @@ A useful reference for understanding how 5G NR, 5GC, SIP, and IMS work together 
 
 # 背景知識筆記
 
-> 本文寫於 2026-09-21，描述的是現有 PoC（含 AF shim）；改善計畫見 `docs/plan/`。
+> 本文寫於 2026-09-21，描述的是現有 PoC（含 AF shim）；改善計畫見 `docs/overview/`。
 
 > 對照專案：`kamailio-free5gc/`（free5gc 4.2.3 + Kamailio 6.1.4 + PyHSS 2.0.0）
 > 延伸閱讀：`kamailio-free5gc/docs/architecture.md`、`call-flows.md`、`identities.md`、`policy-and-qos.md`
@@ -52,7 +52,7 @@ A useful reference for understanding how 5G NR, 5GC, SIP, and IMS work together 
   | 認證       | 5G-AKA                           | IMS AKA                                                                                                   |
 
   所以一支手機要打電話，得**先過 5G 認證拿到網路，再過 IMS 認證拿到通話服務**。目前 HSS 和 UDR 之間沒有介面，只靠「開戶時從同一個 IMSI 推導出兩邊的身分」來保持一致（詳見 `kamailio-free5gc/docs/identities.md`）。計畫 W8 會把 HSS 併入 UDM，兩邊改用同一份資料。
-- 兩邊共有五個對接點（完整說明見 `docs/current/free5gc-kamailio-integration.md`）。其中三個是網路介面：
+- 兩邊共有五個對接點（完整說明見 `docs/overview/free5gc-kamailio-integration.md`）。其中三個是網路介面：
 
   | 接點          | 用途                                                 |
   | ------------- | ---------------------------------------------------- |
@@ -350,7 +350,7 @@ sequenceDiagram
 | **My**：MRFC ↔ MRFP                                  | 應該是**Mp**（H.248），沒有 My 這個介面                                                                                                                                                                                  |
 | **Mr**：TAS ↔ MRFC                                   | S-CSCF ↔ MRFC 才是 Mr；AS ↔ MRFC 是**Mr'**                                                                                                                                                                             |
 | **Cx**：S-CSCF ↔ HSS/UDR                             | **I-CSCF 和 S-CSCF** 都會走 Cx 到 HSS（I-CSCF 用 UAR/LIR）                                                                                                                                                               |
-| **HSS/UDR** 畫成同一顆資料庫                          | 標準上可以把 HSS 和 UDM 合設（HSS+UDM），但兩者仍是不同的功能。本專案目前讓 PyHSS 和 UDR 完全分開，兩者之間沒有任何介面；計畫 W8 會把 HSS 併入 UDM（見 `docs/plan/hss-in-udm-design.md`）                                                                                                        |
+| **HSS/UDR** 畫成同一顆資料庫                          | 標準上可以把 HSS 和 UDM 合設（HSS+UDM），但兩者仍是不同的功能。本專案目前讓 PyHSS 和 UDR 完全分開，兩者之間沒有任何介面；計畫 W8 會把 HSS 併入 UDM（見 `docs/hss-udm/`）                                                                                                        |
 | **缺少 N5（或 Rx）**                                  | 這是 IMS 和 5GC 之間**最關鍵的一條線**：P-CSCF（以 AF 身分）↔ PCF，用來要求語音 QoS。圖上完全沒畫，只在 Key Points 提到「PCF + UPF 執行 QoS」                                                                           |
 | **缺少 N6**                                           | 圖上的 SIP 和 RTP 長線從 gNB 直接連到 IMS 和 MGW，**看起來像繞過了 UPF**。實際上 SIP 和 RTP 對 5GC 而言都只是使用者面的封包，**一定要走 N3 → UPF → N6** 才能到 IMS。本專案用兩個互不相通的網段，確保一定經過 UPF |
 | QoS「由 PCF + UPF 執行」                                    | PCF 只負責**決策**；執行的是 UPF（封包分類、QER），以及 gNB（無線資源排程，GBR 真正的保證在這裡）。另外，free5gc 的 UPF 雖然會裝上 QER，但實際上不會限速                                                                 |

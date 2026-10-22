@@ -1,6 +1,6 @@
 # Rx／N5 Adapter 到底要做什麼
 
-> 這份文件用一通實際的電話，一步一步解釋 Adapter 的工作。實作細節（AVP 代碼、程式結構、對應表）在 `rx-n5-adapter-design.md`。
+> 這份文件用一通實際的電話，一步一步解釋 Adapter 的工作（informative）。為什麼這樣設計見 [design.md](design.md)；必須遵守的行為以 [interface-spec.md](interface-spec.md) 為準，本文與規格不一致時以規格為準。
 > 文中的 IP、IMSI 取自本專案；Adapter 自己的位址與 Session-Id 是示意值。
 
 ## 1. 一句話
@@ -132,7 +132,7 @@ AA-Request
 
 Kamailio 用**同一個 Session-Id** 再送 AAR。Adapter 查表發現已經存在，改用 `PATCH /app-sessions/{id}`，不是再建一個。
 
-> free5gc PCF 的 PATCH 有限制：同一通電話第二次以後改 flow，舊規則刪不掉。對策還沒決定，見 [rx-n5-adapter-design.md](rx-n5-adapter-design.md) §6.2 與 §10 第 5 項。
+> free5gc PCF 的 PATCH 有限制：同一通電話第二次以後改 flow，舊規則刪不掉。對策還沒決定，所以**第一階段（W3a）收到更新一律拒絕、保留原規則**，PATCH 留到 W3b，見 [ADR-0006](adr/0006-no-aar-update-in-phase1.md)。
 
 ### 4.4 正常掛斷（BYE）
 
@@ -140,7 +140,9 @@ Kamailio 用**同一個 Session-Id** 再送 AAR。Adapter 查表發現已經存�
 
 1. 查表找到 app session
 2. `POST /app-sessions/{id}/delete`
-3. 從表中刪掉，回 STA 2001
+3. 確認刪除後標成已關閉（短期保留紀錄以回覆重送），回 STA 2001
+
+> 刪除失敗時不能直接丟掉紀錄，否則 UPF 上的規則沒人記得；Adapter 會保留 URI 並重試，見 [ADR-0005](adr/0005-keep-resource-until-delete-confirmed.md)。
 
 PCF 會叫 SMF 把 UPF 上的語音規則拿掉。
 
@@ -150,16 +152,18 @@ PCF 會叫 SMF 把 UPF 上的語音規則拿掉。
 
 1. SMF 釋放 UE2 的 PDU session，PCF 發現 app session 2 已失去依據
 2. PCF 送 `POST {notifUri}/terminate` 給 Adapter
-3. Adapter 查表找到 Rx session `…;1001;2`，先回 PCF 204
+3. Adapter 查表找到 Rx session `…;1001;2`，先回 PCF 204，再呼叫 N5 Delete（free5gc PCF 已經刪掉 app session，會回 404，視為已清理）
 4. Adapter 送 **ASR**（Abort-Cause = BEARER_RELEASED）給 Kamailio
 5. Kamailio 結束這通電話：對 UE1 送 BYE，並對兩段送 STR
-6. Adapter 照 4.4 清掉兩筆
+6. UE2 那段的 STR，Adapter 直接回 STA 成功（app session 在第 3 步已處理）；UE1 那段照 4.4 正常清掉
+
+順序的理由見 [ADR-0007](adr/0007-delete-then-asr-on-terminate.md)。這屬於 W3b。
 
 **結果：** UE1 聽到通話結束，而不是對著一條死掉的線講話。
 
 ### 4.6 網路事件
 
-如果 AAR 裡有 Specific-Action（例如「資源預留成功時通知我」），Adapter 在 N5 裡用 `evSubsc` 訂閱對應事件。PCF 通知時，Adapter 把事件翻回 Specific-Action，用 **RAR** 告訴 Kamailio。
+W3b 只處理一種事件：語音資源失效（FAILED_RESOURCES_ALLOCATION，例如 gNB 拒絕語音 QFI，經 SMF 回報）。AAR 訂閱了 Specific-Action 2、4 或 9 時，Adapter 在 N5 裡訂閱這個事件。通知到達時：整通電話的 flow 都失效就送 **ASR** 結束通話；只有部分失效就送 **RAR**，Specific-Action 依 Kamailio 訂閱的值用 9 或 4（[ADR-0008](adr/0008-map-failed-resources-to-rar-or-asr.md)）。其他事件屬 W3c 之後。
 
 ### 4.7 IMS 註冊時（之後的階段）
 
@@ -184,7 +188,7 @@ UE 註冊成功後，P-CSCF 可以用 `Rx_AAR_Register` 為 SIP 信令本身建�
 
 | # | 地方 | 為什麼 |
 |---|---|---|
-| 1 | **身分** | Kamailio 預設送 IMPU（SIP URI），不是 IMSI。Adapter 要從 IMPU 推 SUPI；推不出來時只能靠 UE IP，而 free5gc PCF 只靠 IP 找 session 時多 UE 可能綁錯 |
+| 1 | **身分** | Kamailio 預設送 IMPU（SIP URI），不是 IMSI。Adapter 用開戶 mapping（或明確開啟的 IMPU 推導）取得 SUPI；綁不出來就拒絕，不退回只用 UE IP，因為 free5gc PCF 只靠 IP 找 session 時多 UE 可能綁錯（[ADR-0003](adr/0003-reject-unbindable-identity.md)） |
 | 2 | **Flow-Description 的方向** | Kamailio 的上行寫成 `permit in … from <UE> to <對方>`；現在可正常運作的 shim 是兩個方向都寫成 `from <對方> to <UE>`。free5gc PCF 只把 `permit in` 換成 `permit out`、地址不動，所以上行規則可能整個反過來。**W7（Phase 0）要抓包確認 UPF 上的規則**，不對就由 Adapter 先把上行改寫成 shim 的格式 |
 | 3 | **頻寬單位** | Rx 是 bps 整數；N5 是字串，例如 `"64000 bps"` |
 | 4 | **不認識的 AVP** | Kamailio 會帶一些 Adapter 不需要的 AVP（例如 ETSI 的優先權），不能因此拒絕請求 |

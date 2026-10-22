@@ -73,10 +73,10 @@
    "image_queries": []
   },
   {
-   "title": "5GC 與 IMS 只有 3 個接點",
+   "title": "5GC 與 IMS 只有 5 個對接點",
    "type": "content",
    "layout": "hero_big_number",
-   "brief": "Huge '3' on left. Right three rows: N6, PCO, N5. Footnote: UDR 與 HSS 之間沒有介面.",
+   "brief": "Huge '5' on left with legend (網路介面 vs 設定與開戶對齊). Right five rows: N6, ims DNN, PCO, 身分與金鑰, N5.",
    "image_queries": []
   },
   {

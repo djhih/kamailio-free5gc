@@ -161,7 +161,7 @@ els=title("怎麼證明真的接上了")+[box(70,130,560,440,fill=BT),box(650,13
 add("怎麼證明真的接上了","content","two_column_comparison","03 vs 05 tests.",els)
 
 # 11 gaps
-gp=[("SMF 沒送 N1N2","policy 更新只改 UPF，gNB 與 UE 不知道語音 QoS flow"),("PCF 通知只寫 log","PDU session 斷了，通話還掛著"),("註冊時沒交換資訊","沒有信令 flow、事件訂閱（29.513 B.5–B.8）"),
+gp=[("SMF 沒送 N1N2","policy 更新只改 UPF，gNB 與 UE 不知道語音 QoS flow"),("PCF 終止通知收不到","送到 /notify/terminate，shim 回 404；通話還掛著"),("註冊時沒交換資訊","沒有信令 flow、事件訂閱（29.513 B.5–B.8）"),
     ("AMF imsVoPS = 0","網路告訴 UE 不支援 IMS 語音"),("PCO 只有 IPv4","沒有 IPv6 P-CSCF"),("QER 不真的限速","free5gc 的已知限制")]
 els=[box(0,0,400,720,fill=B,shape="rect"),text(50,150,320,250,para(run("6",160,W,True))),
      text(50,430,320,140,para(run("個還沒打通的地方",24,W,True),spaceAfterPt=8),para(run("前兩個影響最大",15,LT)))]

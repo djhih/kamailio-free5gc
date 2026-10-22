@@ -6,24 +6,20 @@
 
 ## 目前狀態
 
-只有計畫與設計，尚未實作。從 [docs/plan/vonr-ims-nf-plan.md](docs/plan/vonr-ims-nf-plan.md) 開始看。
+只有計畫與規格，尚未實作。所有工作項（W1～W8）都已有規格；先看 [docs/overview/](docs/overview/README.md)。
 
 ## 文件
 
-| 文件 | 內容 |
+| 資料夾 | 內容 |
 |---|---|
-| **計畫** | |
-| [docs/plan/vonr-ims-nf-plan.md](docs/plan/vonr-ims-nf-plan.md) | 總計畫：8 個工作項（W1–W8）、時程、驗收方式 |
-| [docs/plan/rx-n5-adapter-explained.md](docs/plan/rx-n5-adapter-explained.md) | Rx／N5 Adapter 要做什麼（用一通電話說明） |
-| [docs/plan/rx-n5-adapter-design.md](docs/plan/rx-n5-adapter-design.md) | Adapter 怎麼寫：介面、程式結構、對應表、實作順序 |
-| [docs/plan/hss-in-udm-design.md](docs/plan/hss-in-udm-design.md) | HSS 併入 UDM 怎麼寫：Cx、UDR 擴充、共用 SQN、實作順序 |
-| [docs/plan/vonr-ims-dev-process.md](docs/plan/vonr-ims-dev-process.md) | 照 free5gc 慣例的開發流程與程式結構 |
-| **現況** | |
-| [docs/current/free5gc-kamailio-integration.md](docs/current/free5gc-kamailio-integration.md) | kamailio-free5gc 目前的五個對接點與缺口 |
-| **背景** | |
-| [docs/background/note.md](docs/background/note.md) | IMS、SIP、CSCF 入門筆記與 VoNR 架構圖解讀 |
-| [docs/background/3gpp-ims-standards.md](docs/background/3gpp-ims-standards.md) | IMS 相關 3GPP 規格整理與閱讀順序 |
-| [docs/background/ims-af-thesis-comparison.md](docs/background/ims-af-thesis-comparison.md) | 2024 年實驗室碩論的 IMS-AF 與本計畫的差異，含 free5gc PCF 的 PATCH 限制 |
+| [docs/overview/](docs/overview/README.md) | **總覽**：現況（五個對接點、測試實際驗證了什麼、缺口）、總計畫（W1～W8、時程、門檻、待決定）、3GPP 對照、W2／W7 檢查清單、開發流程 |
+| [docs/e2e-harness/](docs/e2e-harness/README.md) | W1：抓包版端到端測試（檢查清單 CHK-*） |
+| [docs/rx-n5/](docs/rx-n5/README.md) | W3、W4：Rx／N5 Adapter 與 Kamailio P-CSCF 設定 |
+| [docs/smf-n1n2/](docs/smf-n1n2/README.md) | W5、W6：SMF 經 N1／N2 通知 gNB 與 UE；free-ran-ue 回應器 |
+| [docs/hss-udm/](docs/hss-udm/README.md) | W8：HSS 併入 UDM |
+| [docs/background/](docs/background/) | 背景：IMS 入門筆記（`note.md`）、3GPP 規格整理（`3gpp-ims-standards.md`）、2024 年碩論比較（`ims-af-thesis-comparison.md`） |
+
+每個規格組（rx-n5、smf-n1n2、hss-udm、e2e-harness）都是同一個結構：README（索引）、explained（用例子走一遍，部分有）、design（為什麼、替代方案、風險）、interface-spec（編號需求）、test-plan（需求追溯）、adr/（決策）。
 
 ## 其他資料夾
 
